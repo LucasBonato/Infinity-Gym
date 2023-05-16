@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,26 +7,39 @@
     
     <title>Infinity Gym</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="CSS/style.css">
 </head>
 <body>
     <header>
         <nav>
             <ul>
-                <li id="hamburguer-menu"><img src="" alt=""></li>
+                <li id="hamburguer-menu">
+                    <button class="hamburguer">
+                        <div class="barra"></div>
+                    </button>
+                </li>
                 <li class="logo"><img src="" alt=""></li>
             </ul>
         </nav>
     </header>
+    <nav class="mobile-nav">
+        <ul>
+            <li><a href="#TOP" class="card-titulo btn-nav">Home</a></li>
+            <li><a href="#METAS" class="card-titulo btn-nav">Metas</a></li>
+            <li><a href="#LOCAIS" class="card-titulo btn-nav">Locais</a></li>
+            <li><a href="#PLANOS" class="card-titulo btn-nav">Planos</a></li>
+            <li><img src="" alt="" class="logo"></li>
+        </ul>
+    </nav>
     <main>
-        <section id="top">
+        <section id="TOP">
             <h1>INFINITY</h1>
             <article class="slide">
 
             </article>
         </section>
         <div class="espaLateral">
-            <section id="metas">
+            <section id="METAS">
                 <article class="titulo">
                     <h2>Qual a sua <span class="blue-back">META?</span></h2>
                 </article>
@@ -45,14 +58,14 @@
                     </article>
                 </section>
             </section>
-            <section id="locais">
+            <section id="LOCAIS">
                 <article class="titulo">
                     <h2>LOCAIS</h2>
                 </article>
                 <article class="slide">
                 </article>
             </section>
-            <section id="planos">
+            <section id="PLANOS">
                 <article class="titulo">
                     <h2>PLANOS</h2>
                 </article>
@@ -61,11 +74,11 @@
                         <img src="" alt="" class="card-img">
                         <h3 class="card-titulo">BÁSICO</h3>
                         <ul>
-                            <li>Teste</li>
-                            <li>Teste</li>
-                            <li>Teste</li>
-                            <li>Teste</li>
-                            <li>Teste</li>
+                            <li><p>Teste</p> <img src="img/Done-24.png" alt=""></li>
+                            <li><p>Teste</p> <img src="img/Done-24.png" alt=""></li>
+                            <li><p>Teste</p> <img src="img/Done-24.png" alt=""></li>
+                            <li><p>Teste</p> <img src="img/Done-24.png" alt=""></li>
+                            <li><p>Teste</p> <img src="img/Done-24.png" alt=""></li>
                         </ul>
                         <a href="" class="card-preco">R$ 39,90/Mês</a>
                     </article>
@@ -73,11 +86,11 @@
                         <img src="" alt="" class="card-img">
                         <h3 class="card-titulo">PRO</h3>
                         <ul>
-                            <li>Teste</li>
-                            <li>Teste</li>
-                            <li>Teste</li>
-                            <li>Teste</li>
-                            <li>Teste</li>
+                            <li><p>Teste</p> <img src="img/Done-24.png" alt=""></li>
+                            <li><p>Teste</p> <img src="img/Done-24.png" alt=""></li>
+                            <li><p>Teste</p> <img src="img/Done-24.png" alt=""></li>
+                            <li><p>Teste</p> <img src="img/Done-24.png" alt=""></li>
+                            <li><p>Teste</p> <img src="img/Done-24.png" alt=""></li>
                         </ul>
                         <a href="" class="card-preco">R$ 89,90/Mês</a>
                     </article>
@@ -85,11 +98,11 @@
                         <img src="" alt="" class="card-img">
                         <h3 class="card-titulo">PREMIUM</h3>
                         <ul>
-                            <li>Teste</li>
-                            <li>Teste</li>
-                            <li>Teste</li>
-                            <li>Teste</li>
-                            <li>Teste</li>
+                            <li><p>Teste</p> <img src="img/Done-24.png" alt=""></li>
+                            <li><p>Teste</p> <img src="img/Done-24.png" alt=""></li>
+                            <li><p>Teste</p> <img src="img/Done-24.png" alt=""></li>
+                            <li><p>Teste</p> <img src="img/Done-24.png" alt=""></li>
+                            <li><p>Teste</p> <img src="img/Done-24.png" alt=""></li>
                         </ul>
                         <a href="" class="card-preco">R$ 129,90/Mês</a>
                     </article>
@@ -101,20 +114,23 @@
     <footer>
         <section>
             <img src="" alt="" class="logo">
-            <article class="social-media">   
+            <article class="social-media media">   
                 <h4>Redes Sociais</h4>
                 <ul>
                     <li><a href="">Twitter</a></li>
                     <li><a href="">Tik Tok</a></li>
-                    <li><a href="">Istagram</a></li>
+                    <li><a href="">Instagram</a></li>
                     <li><a href="">Youtube</a></li>
                 </ul>
             </article>
-            <article class="contact">
+            <article class="contact media">
                 <h4>Contato</h4>
-                <a href="">Whatsapp</a>
+                <ul>
+                    <li><a href="">Whatsapp</a></li>
+                </ul>
             </article>
         </section>
-    </footer>    
+    </footer>
+    <script src="JS/index.js"></script>  
 </body>
 </html>

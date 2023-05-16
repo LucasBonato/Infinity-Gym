@@ -5,6 +5,8 @@
     margin: 0;
     padding: 0;
     font-family:'Inter', sans-serif;
+    scroll-behavior: smooth;
+    scroll-margin: 75px;
 }
 
 :root {
@@ -19,11 +21,77 @@
     --radius-main: 20px;
 }
 
+.hamburguer {
+    position: relative;
+    display: block;
+    width: 40px;
+    cursor: pointer;
+    appearance: none;
+    background: none;
+    outline: none;
+    border: none;
+}
 
-@media only screen and (min-width: 320px) {
+.hamburguer .barra,
+.hamburguer::after,
+.hamburguer::before {
+    content: " ";
+    display: block;
+    width: 100%;
+    height: 5px;
+    background-color: var(--color-main);
+    margin: 6px 0;
+    transition: 0.4s;
+    border-radius: 5px;
+}
+
+.hamburguer.ativo::before {
+    transform: rotate(45deg) translate(8px, 6px);
+}
+
+.hamburguer.ativo::after {
+    transform: rotate(-45deg) translate(9px, -8px);
+}
+
+.hamburguer.ativo .barra {
+    opacity: 0;
+}
+
+.mobile-nav {
+    position: fixed;
+    right: 100%;
+    width: 80%;
+    height: 100%;
+    display: block;
+    z-index: 10;
+    background-color: var(--color-white);
+    margin-top: -11px;
+    border-right: 5px solid var(--color-main);
+    border-radius: 0 0 var(--radius-main) 0;
+    transition: 0.4s;
+}
+
+.mobile-nav.ativo {
+    right: 20%;
+}
+
+.mobile-nav ul {
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.mobile-nav ul li a {
+    text-decoration: none;
+    color: var(--color-main);
+    font-size: 2rem;
+    padding: 0 10px 0 10px;
+}
+
+@media only screen and (max-width: 426px) {
     body {
         background-color: var(--color-background);
-        scroll-margin: 65px;
         margin-top: 70px;
     }
 
@@ -50,25 +118,28 @@
 
     nav ul {
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
         align-items: center;
         width: 100%;
     }
 
     nav ul li {
-        background-color: #101010;
+        /*background-color: #101010;*/
         width: 50px;
         height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
-    section#top {
+    section#TOP {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
     }
 
-    section#top {
+    section#tTOP {
         margin: 2%;
     }
 
@@ -153,7 +224,7 @@
         border-radius: var(--radius-main);
     }
 
-    h3.card-titulo {
+    .card-titulo {
         background-color: var(--color-white);
         color: var(--color-main);
         padding: 2% 5% 2% 5%;
@@ -166,13 +237,19 @@
         border-top: 2px solid #000;
         padding-top: 15%;
         width: 80%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     article.card-plano ul li {
-        list-style: url("img/Done-24.png");
+        list-style: none;
         list-style-position: inside;
         width: 80%;
         font-size: 1.2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
 
     a.card-preco {
@@ -199,6 +276,33 @@
         align-items: center;
     }
 
+    footer article.social-media {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 200px;
+    }
+
+    footer article.contact {
+        height: 100px;
+    }
+
+    footer ul {
+        height: 70%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    footer .media ul li {
+        text-align: center;
+    }
+
+    footer a {
+        text-decoration: none;
+        color: var(--color-main);
+    }
+
     footer img {
         height: 100px;
     }
@@ -207,5 +311,14 @@
         color: var(--color-white);
         font-size: 1.2rem;
     }
+}
 
+@media only screen and (min-width: 426px) {
+    body {
+        background-color: #000;
+    }
+
+    li#hamburguer-menu {
+        display: none;
+    }
 }
