@@ -8,6 +8,7 @@
     <title>Infinity Gym</title>
 
     <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="stylesheet" href="../node_modules/@splidejs/splide/dist/css/themes/splide-skyblue.min.css">
 </head>
 <body>
     <header>
@@ -38,9 +39,15 @@
     <main>
         <section id="HOME">
             <h1>INFINITY</h1>
-            <article class="slide">
-
-            </article>
+            <section class="splide" aria-label="Splide Basic HTML Example">
+                <div class="splide__track">
+                      <ul class="splide__list">
+                          <li class="splide__slide"><img src="../img/men-GYM-1920x600.jpg" alt=""></li>
+                          <li class="splide__slide"><img src="../img/whieght-GYM1920x600.jpg" alt=""></li>
+                          <li class="splide__slide"><img src="../img/woman-GYM-1920x600.jpg" alt=""></li>
+                      </ul>
+                </div>
+              </section>
         </section>
         <div class="espaLateral">
             <section id="METAS">
@@ -67,6 +74,7 @@
                     <h2>LOCAIS</h2>
                 </article>
                 <article class="slide">
+
                 </article>
             </section>
             <section id="PLANOS">
@@ -135,6 +143,8 @@
             </article>
         </section>
     </footer>
-    <script src="../JS/index.js"></script>  
+    <script src="../node_modules/@splidejs/splide/dist/js/splide.min.js"></script>
+    <script src="../JS/index.js"></script>
+    <script src="../JS/slides.js"></script>
 </body>
 </html>
