@@ -106,8 +106,8 @@ li.desktop a {
 }
 
 .logo {
-    width: 60px;
-    height: 60px;
+    width: 3.5rem;
+    height: 3.5rem;
 }
 
 .mobile-nav {
@@ -145,8 +145,8 @@ li.desktop a {
 }
 
 .logo-mobile {
-    width: 150px;
-    height: 150px;
+    width: 10rem;
+    height: 10rem;
 }
 
 section#HOME {
@@ -157,7 +157,7 @@ section#HOME {
 }
 
 section#HOME {
-    margin: 8% 0 8% 0;
+    margin: 10% 0;
 }
 
 h1 {
@@ -178,7 +178,7 @@ article.slide {
 article.titulo {
     background-color: var(--color-white);
     border-radius: var(--radius-main);
-    padding: 5%;
+    padding: 2rem 1rem;
     box-shadow: 0px 0px 15px 10px var(--color-cyan-shadow);
 }
 
@@ -348,7 +348,7 @@ h4 {
     }
 
     .espaLateral {
-        margin: 0 20vw;
+        margin: 0 10vw;
     }
     
     .cards {
@@ -362,7 +362,7 @@ h4 {
     }
     
     .espaLateral {
-        margin: 0 25vw;
+        margin: 0 20vw;
     }
 
     .cards {
@@ -384,6 +384,23 @@ h4 {
     li.desktop a {
         display: flex;
         align-items: center;
+        padding-bottom: 2px;
+        background-image: linear-gradient(var(--color-main) 0 0);
+        background-position: 0 100%;
+        background-size: 0% 2px;
+        background-repeat: no-repeat;
+        transition: 
+        background-size 0.3s,
+        background-position 0s 0.3s;
+    }
+    
+    li.desktop a:hover {
+        background-position: 100% 100%;
+        background-size: 100% 3px;
+    }
+
+    section#HOME {
+        margin: 12.5vh 0;
     }
 
     nav ul li{
@@ -403,7 +420,7 @@ h4 {
     }
 
     .titulo {
-        margin: 0 25vw;
+        margin: 0 25vw;   
     }
 
     .espaLateral {
@@ -412,18 +429,34 @@ h4 {
 
     #METAS .cards{
         flex-direction: row;
+        margin: 15vh 0;
 
         .card {
-            width: 30%;
+            width: 22.5vw;
+            margin-bottom: 0;
         }
     }
 
     #PLANOS .cards {
         flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        width: 90vw;
+        margin: 15vh auto;
 
 
-        /* .card-plano[class*="menor"] {
-            height: 100vh;
-        } */
+        .card-plano[class*="maior"] {
+            height: 85vh;
+        }
+
+        .card-plano[class*="menor"] {
+            height: 75vh;
+        }
+    }
+
+    article.card-plano {
+        padding: .5%;
+        width: 22.5vw;
+        margin-bottom: 0;
     }
 }
