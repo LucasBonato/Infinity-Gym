@@ -420,6 +420,7 @@ a.card-preco {
 
 footer {
     background-color: var(--color-footer);
+    padding-bottom: 2rem;
 }
 
 footer section {
@@ -468,6 +469,25 @@ footer img {
 h4 {
     color: var(--color-white);
     font-size: 1.2rem;
+}
+
+section.splide {
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 5vh;
+    height: auto;
+}
+
+section.splide,
+li.splide__slide,
+ul.splide__list,
+li.splide__slide img {
+    width: 100%;
+    border-radius: var(--radius-main);
+}
+
+li.splide__slide {
+    margin-right: 2rem;
 }
 
 .hidden {
@@ -580,6 +600,19 @@ h4 {
         margin-bottom: 0;
     }
 
+    .card-form {
+        height: 70vh;
+        width: 20rem;
+    }
+    
+    .card-form h3 {
+        font-size: 1.8rem;
+    }
+
+    .submitBtn button{
+        font-size: 1.8rem;
+    }
+
     #PLANOS .cards {
         flex-direction: row;
         justify-content: space-evenly;
@@ -601,23 +634,12 @@ h4 {
         width: 22.5vw;
         margin-bottom: 0;
     }
-}
 
-section.splide {
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 5vh;
-    height: auto;
-}
+    footer section {
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-around;
 
-section.splide,
-li.splide__slide,
-ul.splide__list,
-li.splide__slide img {
-    width: 100%;
-    border-radius: var(--radius-main);
-}
-
-li.splide__slide {
-    margin-right: 2rem;
+        width: 100%;
+    }
 }

@@ -1,18 +1,33 @@
 let buttonSub = document.getElementById('buttonSub');
-let inputAltura = document.getElementById('altura');
-let inputPeso = document.querySelector('#peso');
-let radioInpu = document.querySelector('input[name="MascFemi"]:checked');
 
 buttonSub.addEventListener("click", () => {
-    if(Verficar()){
-        console.log(inputPeso.value);
+    let inputAltura = document.getElementById('altura').value;
+    let inputPeso = document.getElementById('peso').value;
+    let radioInpu = document.querySelectorAll('.testeInpu').attributes.value;
 
+    let numPeso, numAltura;
+
+    if(Verify(inputAltura, inputPeso, radioInpu)){
+        numPeso = Number(numPeso);
+        numAltura = Number(numAltura);
+        console.log(inputAltura, inputPeso, radioInpu);
+        console.log(numAltura, numPeso)
+
+    } else {
+        alert("[ERROR] Preencha todos os campos antes de enviar!");
     }
-})
+});
 
-const Verficar = () => {
-    if(radioInpu.value == "" || inputPeso.value == "" || inputAltura.value == "") {
-        alert("Preencha todas as informações!");
+const Verify = (height, weight, radio) => {
+    if(height == "" || weight == "" || radio == ""){
+        return false;
+    } else {
+        return true;
+    }
+}
+
+const Convert = (height, weight) => {
+    if(isNaN(Number(height)) && isNaN(Number(weight))){
         return false;
     } else {
         return true;
