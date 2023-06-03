@@ -8,7 +8,10 @@
     <title>Infinity Gym</title>
 
     <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="shortcut icon" href="../img/icons/LOGO(64).ico" type="image/x-icon">
     <link rel="stylesheet" href="../node_modules/@splidejs/splide/dist/css/themes/splide-skyblue.min.css">
+
+    <script defer src="../JS/goingIn.js"></script>
 </head>
 <body>
     <header>
@@ -21,9 +24,10 @@
                 </li>
                 <li class="desktop"><a href="#PLANOS">Planos</a></li>
                 <li class="desktop"><a href="#LOCAIS">Locais</a></li>
+                <li class="desktop"><a href="#IMC">IMC</a></li>
                 <li class="desktop"><a href="#METAS">Metas</a></li>
                 <li class="desktop"><a href="#HOME">Home</a></li>
-                <li><a href="#HOME"><img src="../img/LOGO.svg" alt="" class="logo"></a></li>
+                <li><a href="#HOME"><img src="../img/logo/LOGO.svg" alt="" class="logo"></a></li>
             </ul>
         </nav>
     </header>
@@ -31,9 +35,10 @@
         <ul>
             <li><a href="#HOME" class="card-titulo btn-nav">Home</a></li>
             <li><a href="#METAS" class="card-titulo btn-nav">Metas</a></li>
+            <li><a href="#IMC" class="card-titulo btn-nav">IMC</a></li>
             <li><a href="#LOCAIS" class="card-titulo btn-nav">Locais</a></li>
             <li><a href="#PLANOS" class="card-titulo btn-nav">Planos</a></li>
-            <li><img src="../img/LOGO.svg" alt="" class="logo-mobile"></li>
+            <li><img src="../img/logo/LOGO.svg" alt="" class="logo-mobile"></li>
         </ul>
     </nav>
     <main>
@@ -51,38 +56,78 @@
         </section>
         <div class="espaLateral">
             <section id="METAS">
-                <article class="titulo">
+                <article class="titulo hidden">
                     <h2>Qual a sua <span class="blue-back">META?</span></h2>
                 </article>
-                <section class="cards">
-                    <article class="card">
+                <section class="cards test">
+                    <article class="card hidden">
                         <h3>Ganhar Massa</h3>
                         <img src="" alt="">
                     </article>
-                    <article class="card">
+                    <article class="card hidden">
                         <h3>Perder Peso</h3>
                         <img src="" alt="">
                     </article>
-                    <article class="card">
+                    <article class="card hidden">
                         <h3>Artes Marciais</h3>
                         <img src="" alt="">
                     </article>
                 </section>
             </section>
+            <section id="IMC">
+                <article class="titulo hidden">
+                    <h2>IMC</h2>
+                </article>
+                <div class="centro">
+                    <article class="card-form hidden">
+                        <h3>Descubra o seu IMC <br> para o plano ideal</h3>
+                        <form action="">
+                            <article class="radioBtn">
+                                <div>
+                                    <input type="radio" name="MascFemi" id="M" value="M">
+                                    <label for="Masc">Masculino</label>
+                                </div>
+
+                                <div>
+                                    <input type="radio" name="MascFemi" id="F" value="F">
+                                    <label for="Femi">Feminino</label>
+                                </div>
+                            </article>
+                            <article class="textInput">
+                                <input type="text" class="formInput" autocomplete="off" placeholder=" " id="peso">
+                                <label for="" class="formLabel">Peso (Kg)</label>
+                            </article>
+                            <article class="textInput">
+                                <input type="text" class="formInput" autocomplete="off" placeholder=" " id="altura">
+                                <label for="" class="formLabel">Altura (m)</label>
+                            </article>
+                        </form>
+                        <article class="submitBtn"><button class="btnForm" id="buttonSub">Enviar</button></article>
+                    </article>
+                </div>
+            </section>
             <section id="LOCAIS">
-                <article class="titulo">
+                <article class="titulo hidden">
                     <h2>LOCAIS</h2>
                 </article>
-                <article class="slide">
-
-                </article>
+                <!-- <article class="slide hidden">
+                    <section class="splide" aria-label="Splide Basic HTML Example">
+                        <div class="splide__track">
+                              <ul class="splide__list">
+                                  <li class="splide__slide"><img src="../img/men-GYM-1920x600.jpg" alt=""></li>
+                                  <li class="splide__slide"><img src="../img/whieght-GYM1920x600.jpg" alt=""></li>
+                                  <li class="splide__slide"><img src="../img/woman-GYM-1920x600.jpg" alt=""></li>
+                              </ul>
+                        </div>
+                      </section>
+                </article> -->
             </section>
             <section id="PLANOS">
-                <article class="titulo">
+                <article class="titulo hidden">
                     <h2>PLANOS</h2>
                 </article>
                 <section class="cards">
-                    <article class="card-plano menor">
+                    <article class="card-plano menor hidden">
                         <img src="" alt="" class="card-img">
                         <h3 class="card-titulo">BÁSICO</h3>
                         <ul>
@@ -94,7 +139,7 @@
                         </ul>
                         <a href="" class="card-preco">R$ 39,90/Mês</a>
                     </article>
-                    <article class="card-plano maior">
+                    <article class="card-plano maior hidden">
                         <img src="" alt="" class="card-img">
                         <h3 class="card-titulo">PRO</h3>
                         <ul>
@@ -106,7 +151,7 @@
                         </ul>
                         <a href="" class="card-preco">R$ 89,90/Mês</a>
                     </article>
-                    <article class="card-plano menor">
+                    <article class="card-plano menor hidden">
                         <img src="" alt="" class="card-img">
                         <h3 class="card-titulo">PREMIUM</h3>
                         <ul>
@@ -125,7 +170,7 @@
     <div class="gradient"></div>
     <footer>
         <section>
-            <img src="../img/LOGO.svg" alt="" class="logo-footer">
+            <img src="../img/Logo/LOGO.svg" alt="" class="logo-footer">
             <article class="social-media media">   
                 <h4>Redes Sociais</h4>
                 <ul>
@@ -146,5 +191,6 @@
     <script src="../node_modules/@splidejs/splide/dist/js/splide.min.js"></script>
     <script src="../JS/index.js"></script>
     <script src="../JS/slides.js"></script>
+    <script src="../JS/imc.js"></script>
 </body>
 </html>

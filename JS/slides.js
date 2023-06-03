@@ -1,6 +1,8 @@
-const splide = new Splide('.splide', {
-    type   : 'loop',
-    autoplay: true,
-});
+let slides = document.getElementsByClassName('splide');
 
-splide.mount();
+for(let i = 0; i < slides.length; i++){
+    new Splide(slides[i], {
+        type   : 'loop',
+        autoplay: true,
+    }).mount();
+}

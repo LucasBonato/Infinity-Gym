@@ -8,7 +8,7 @@
     scroll-behavior: smooth;
     scroll-margin: 12.5vh;
     scrollbar-width: thin;
-    scrollbar-color: var(--color-main) var(--color-white);
+    scrollbar-color: var(--color-main) var(--color-footer);
 }
 
 *::-webkit-scrollbar {
@@ -16,13 +16,13 @@
 }
 
 *::-webkit-scrollbar-track {
-    background-color: var(--color-white);
+    background-color: var(--color-footer);
 }
 
 *::-webkit-scrollbar-thumb {
     background-color: var(--color-main);
     border-radius: var(--radius-main);
-    border: 2px solid var(--color-white);
+    border: 2px solid var(--color-footer);
 }
 
 :root {
@@ -73,7 +73,6 @@ header nav ul {
 }
 
 header nav ul li {
-    /*background-color: #101010;*/
     width: 50px;
     height: 50px;
     display: flex;
@@ -171,10 +170,7 @@ section#HOME {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-section#HOME {
-    margin: 10% 0;
+    margin-top: 13vh;
 }
 
 h1 {
@@ -184,12 +180,135 @@ h1 {
     border-bottom: 5px solid var(--color-white);
 }
 
-article.slide {
-    height: 400px;
-}
-
 .espaLateral {
     margin: 0 10vw;
+}
+
+#IMC .centro {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--color-white);
+    border-radius: var(--radius-main);
+    height: 350px;
+    width: auto;
+    padding: 1.5rem;
+    margin: 2.5rem 0;
+}
+
+.card-form h3 {
+    text-align: center;
+    background-color: var(--color-main);
+    color: var(--color-white);
+    padding: .5rem;
+    border-radius: var(--radius-main);
+}
+
+form {
+    margin-top: .5rem;
+}
+
+article.radioBtn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.radioBtn div input {
+    appearance: none;
+    border-radius: 50%;
+    border: 2px solid var(--color-main);
+    width: 15px;
+    height: 15px;
+    transition: 0.2s all linear;
+}
+
+.radioBtn div input:checked {
+    border: 7px solid var(--color-main);
+    background-color: var(--color-main);
+}
+
+.radioBtn div {
+    width: 40%;
+    margin-bottom: 1rem;
+}
+
+.textInput{
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.formInput{
+    font-size: 1rem;
+    border: 2px solid var(--color-main);
+    border-radius: .5rem;
+    outline: none;
+    padding: 1rem;
+    background: none;
+    z-index: 1;
+    color: var(--color-background);
+}
+
+.formLabel{
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    padding: 0 .25rem;
+    background-color: var(--color-white);
+    color: var(--color-background);
+    font-size: 1rem;
+    border-radius: var(--radius-main);
+    transition: .3s;
+}
+
+.formInput:focus + .formLabel{
+    top: -.5rem;
+    left: .8rem;
+    font-size: .75rem;
+    font-weight: 500;
+    z-index: 10;
+}
+
+.formInput:not(:placeholder-shown).formInput:not(:focus)+ .formLabel{
+    top: -.5rem;
+    left: .8rem;
+    font-size: .75rem;
+    font-weight: 500;
+    z-index: 10;
+}
+
+.formInput:focus{
+    border: 2px solid var(--color-background);
+}
+
+article.submitBtn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btnForm {
+    background-color: var(--color-main);
+    color: var(--color-white);
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: var(--radius-main);
+}
+
+.btnForm:hover {
+    background-color: var(--color-price);
+}
+
+.btnForm:active {
+    background-color: var(--color-footer);
 }
 
 article.titulo {
@@ -351,10 +470,18 @@ h4 {
     font-size: 1.2rem;
 }
 
+.hidden {
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: all 1s;
+}
+
+.show {
+    opacity: 1;
+    transform: translateX(0);
+}
 
 /*Tablet*/
-
-
 @media only screen and (min-width: 425px) {
     .mobile-nav.ativo {
         right: 20vw;
@@ -373,7 +500,7 @@ h4 {
     }
 }
 
-@media only screen and (min-width: 580px) {
+@media only screen and (min-width: 768px) {
     .mobile-nav.ativo {
         right: 20vw;
     }
@@ -446,11 +573,11 @@ h4 {
     #METAS .cards{
         flex-direction: row;
         margin: 15vh 0;
+    }
 
-        .card {
-            width: 22.5vw;
-            margin-bottom: 0;
-        }
+    .cards .card {
+        width: 20vw;
+        margin-bottom: 0;
     }
 
     #PLANOS .cards {
@@ -459,15 +586,14 @@ h4 {
         align-items: center;
         width: 90vw;
         margin: 15vh auto;
+    }
 
+    .cards .card-plano[class*="maior"] {
+        height: 85vh;
+    }
 
-        .card-plano[class*="maior"] {
-            height: 85vh;
-        }
-
-        .card-plano[class*="menor"] {
-            height: 75vh;
-        }
+    .cards .card-plano[class*="menor"] {
+        height: 75vh;
     }
 
     article.card-plano {
