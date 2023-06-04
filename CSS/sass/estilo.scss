@@ -464,7 +464,7 @@ li.splide__slide {
   transform: translateX(0);
 }
 
-/*Tablet*/
+// * Tablet
 @media only screen and (min-width: 425px) {
     .mobile-nav.ativo {
         right: 20vw;
@@ -493,7 +493,7 @@ li.splide__slide {
     }
 }
 
-/*Desktop*/
+// * Desktop
 @media only screen and (min-width: 1024px) {
     #hamburguer-menu, .hamburguer, .barra, .mobile-nav {
         display: none;
