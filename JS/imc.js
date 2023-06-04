@@ -1,35 +1,82 @@
 let buttonSub = document.getElementById('buttonSub');
+let res = document.getElementById('res');
+
+const inputPeso = document.getElementById('peso');
+const inputAltura = document.getElementById('altura');
+
+let radioMasc = document.getElementById('M');
+let radioFem = document.getElementById('F');
+
+var radioGlo;
 
 buttonSub.addEventListener("click", () => {
-    let inputAltura = document.getElementById('altura').value;
-    let inputPeso = document.getElementById('peso').value;
-    let radioInpu = document.querySelectorAll('.testeInpu').attributes.value;
+    res.innerHTML = "";
 
-    let numPeso, numAltura;
+    const peso = inputPeso.value;
+    const altura = inputAltura.value;
 
-    if(Verify(inputAltura, inputPeso, radioInpu)){
-        numPeso = Number(numPeso);
-        numAltura = Number(numAltura);
-        console.log(inputAltura, inputPeso, radioInpu);
-        console.log(numAltura, numPeso)
+    if(Verify(peso, altura) && RadioCheck(radioMasc, radioFem)) {
+        if(isNaN(peso) || isNaN(altura)) {
+            alert("[ERROR]Só preencha os campos com números! Ex: (17.4)");
+        } else {
+            const numPeso = Number(peso);
+            const numAltura = Number(altura);
 
+            Resposta(numPeso, numAltura);
+        }
     } else {
-        alert("[ERROR] Preencha todos os campos antes de enviar!");
+        alert("[ERROR]Preencha todos os campos antes de continuar!")
     }
+
 });
 
-const Verify = (height, weight, radio) => {
-    if(height == "" || weight == "" || radio == ""){
+const Verify = (height, weight) => {
+    if(height === "" || weight === ""){
         return false;
     } else {
         return true;
     }
 }
 
-const Convert = (height, weight) => {
-    if(isNaN(Number(height)) && isNaN(Number(weight))){
-        return false;
-    } else {
+const RadioCheck = (masc, fem) => {
+    if (masc.checked) {
+        radioGlo = masc.value;
         return true;
+    } else if (fem.checked) {
+        radioGlo = fem.value;
+        return true;
+    } else {
+        return false;
+    }
+}
+
+const Resposta = (P, H) => {
+    let imc = P / (H * H);
+    console.log(imc);
+
+    if (radioGlo == "M") {
+        if(imc > 39.9){
+            res.innerHTML = "Obesidade Morbida";
+        } else if (imc > 29.9) {
+            res.innerHTML = "Obesidade Moderada";
+        } else if (imc > 24.9) {
+            res.innerHTML = "Obesidade Leve";
+        } else if (imc > 19.9){
+            res.innerHTML = "Normal";
+        } else {
+            res.innerHTML = "Abaixo do normal";
+        }
+    } else {
+        if(imc > 38.9){
+            res.innerHTML = "Obesidade Morbida";
+        } else if (imc > 28.9) {
+            res.innerHTML = "Obesidade Moderada";
+        } else if (imc > 23.9) {        
+            res.innerHTML = "Obesidade Leve";
+        } else if (imc > 18.9){
+            res.innerHTML = "Normal";
+        } else {
+            res.innerHTML = "Abaixo do normal";
+        }
     }
 }
