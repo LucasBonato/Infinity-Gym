@@ -520,18 +520,21 @@ li.splide__slide {
         margin: 12.5vh 0;
     }
 
-    nav ul {
-        @include FlexPosition(row-reverse, space-around);
+    header {
 
-        li {
-            width: auto;
+        nav ul {
+            @include FlexPosition(row-reverse, space-around);
+    
+            li {
+                width: auto;
+            }
         }
-    }
 
-    header nav a {
-        text-decoration: none;
-        color: $MainColor;
-        font-size: $fontSize-2;
+        a{
+            text-decoration: none;
+            color: $MainColor;
+            font-size: $fontSize-2;
+        }
     }
 
     .titulo {

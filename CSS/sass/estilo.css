@@ -496,7 +496,6 @@ li.splide__slide img {
   transform: translateX(0);
 }
 
-/*Tablet*/
 @media only screen and (min-width: 425px) {
   .mobile-nav.ativo {
     right: 20vw;
@@ -519,7 +518,6 @@ li.splide__slide img {
     margin: 0 5vw;
   }
 }
-/*Desktop*/
 @media only screen and (min-width: 1024px) {
   #hamburguer-menu, .hamburguer, .barra, .mobile-nav {
     display: none;
@@ -544,16 +542,16 @@ li.splide__slide img {
   section#HOME {
     margin: 12.5vh 0;
   }
-  nav ul {
+  header nav ul {
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-around;
     align-items: center;
   }
-  nav ul li {
+  header nav ul li {
     width: auto;
   }
-  header nav a {
+  header a {
     text-decoration: none;
     color: #48919E;
     font-size: 2rem;
