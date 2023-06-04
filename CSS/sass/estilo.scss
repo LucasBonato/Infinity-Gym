@@ -1,0 +1,599 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@800;900&family=Outfit:wght@300;400;600&display=swap');
+
+@import 'variables';
+@import 'functions';
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    scroll-behavior: smooth;
+    scroll-margin: 12.5vh;
+    scrollbar-width: thin;
+    scrollbar-color: $MainColor $FooterColor;
+  
+    &::-webkit-scrollbar {
+      width: 12px;
+    }
+  
+    &::-webkit-scrollbar-track {
+      background-color: $FooterColor;
+    }
+  
+    &::-webkit-scrollbar-thumb {
+      background-color: $MainColor;
+      border-radius: $Radius;
+      border: 2px solid $FooterColor;
+    }
+  }
+
+  body {
+    background-color: $BackgroundColor;
+    margin-top: 70px;
+
+    ul {list-style: none;}
+    a {text-decoration: none;}
+}
+
+header {
+    @include FlexPosition(row, center);
+    @include WidAndHeig(100%, 10vh);
+
+    position: fixed;
+    background-color: $WhiteColor;
+    outline: 5px solid $MainColor;
+    border-radius: 0 0 $Radius 0;
+    top: -1px;
+    z-index: 10;
+
+    nav {
+        @include WidAndHeig(100vw, auto);
+    }
+}
+
+ul {
+    list-style: none;
+}
+
+header nav ul {
+    @include FlexPosition(row, space-around);
+    @include WidAndHeig(100%, auto);
+    margin: 0 1vw;
+
+    li {
+        @include FlexPosition(row, center);
+        @include WidAndHeig(50px, 50px);
+    }
+}
+
+li.desktop {
+    display: none;
+
+    a {
+        display: none;
+    }
+}
+
+.hamburguer {
+    @include WidAndHeig(40px, auto);
+
+    position: relative;
+    display: block;
+    cursor: pointer;
+    appearance: none;
+    background: none;
+    outline: none;
+    border: none;
+
+    .barra, &::after, &::before {
+        @include WidAndHeig(100%, 5px);
+
+        content: " ";
+        display: block;
+        background-color: $MainColor;
+        margin: 6px 0;
+        transition: 0.4s;
+        border-radius: 5px;
+    }
+
+    &.ativo {
+        &::before {
+            transform: rotate(45deg) translate(8px, 6px);
+        }
+
+        &::after {
+            transform: rotate(-45deg) translate(9px, -8px);
+        }
+
+        .barra {
+            opacity: 0;
+        }
+    }
+}
+
+.logo {
+    @include WidAndHeig(3.5rem, 3.5rem);
+}
+
+.mobile-nav {
+    @include WidAndHeig(80vw, 100vh);
+
+    position: fixed;
+    right: 100vw;
+    display: block;
+    z-index: 10;
+    background-color: $WhiteColor;
+    top: 10vh;
+    border-right: 5px solid $MainColor;
+    border-radius: 0 0 $Radius 0;
+    transition: 0.4s;
+
+    &.ativo {
+        right: 12vh;
+    }
+
+    ul {
+        @include FlexPosition(column, space-around);
+        @include WidAndHeig(100%, 90%);
+
+        li a {
+            text-decoration: none;
+            color: $MainColor;
+            font-size: $fontSize-2;
+            padding: 0 10px;
+        }
+    }
+}
+
+.logo-mobile {
+    @include WidAndHeig(10rem, 10rem);
+}
+
+section#HOME {
+    @include FlexPosition(column, center);
+
+    margin-top: 13vh;
+}
+
+h1 {
+    color: $MainColor;
+    font-size: $fontSize-h1;
+    font-weight: 800;
+    border-bottom: 5px solid $WhiteColor;
+}
+
+.espaLateral {
+    margin: 0 10vw;
+}
+
+#IMC .centro {
+    @include FlexPosition(column, center);
+}
+
+.card-form {
+    @include FlexPosition(column, space-around);
+    @include WidAndHeig(auto, 350px);
+
+    background-color: $WhiteColor;
+    border-radius: $Radius;
+    padding: 1.5rem;
+    margin: 2.5rem 0;
+
+    h3 {
+        text-align: center;
+        background-color: $MainColor;
+        color: $WhiteColor;
+        padding: $fontSize-d5;
+        border-radius: $Radius;
+    }
+}
+
+form {
+    margin-top: $fontSize-d5;
+}
+
+article.radioBtn {
+    @include FlexPosition(column, center);
+}
+
+.radioBtn div {
+    @include WidAndHeig(40%, auto);
+
+    input {
+        @include WidAndHeig(15px, 15px);
+
+        appearance: none;
+        border-radius: 50%;
+        border: 2px solid $MainColor;
+        transition: 0.2s all linear;
+
+        &:checked {
+            border: 7px solid $MainColor;
+            background-color: $MainColor;
+        }
+    }
+
+    margin-bottom: $fontSize-1;
+}
+
+.textInput {
+    position: relative;
+    margin-bottom: $fontSize-1;
+}
+
+.formInput {
+    font-size: $fontSize-1;
+    border: 2px solid $MainColor;
+    border-radius: $fontSize-d5;
+    outline: none;
+    padding: $fontSize-1;
+    background: none;
+    z-index: 1;
+    color: $BackgroundColor;
+}
+
+.formLabel {
+    position: absolute;
+    left: $fontSize-1;
+    top: $fontSize-1;
+    padding: 0 .25rem;
+    background-color: $WhiteColor;
+    color: $BackgroundColor;
+    font-size: $fontSize-1;
+    border-radius: $Radius;
+    transition: .3s;
+}
+
+.formInput {
+    &:focus + .formLabel, &:not(:placeholder-shown).formInput:not(:focus) + .formLabel {
+        top: -.5rem;
+        left: .8rem;
+        font-size: .75rem;
+        font-weight: 500;
+        z-index: 10;
+    }
+
+    &:focus {
+        border: 2px solid $BackgroundColor;
+    }
+}
+
+article.submitBtn {
+    @include FlexPosition(row, center);
+    @include WidAndHeig(100%, auto);
+
+}
+
+.btnForm {
+    background-color: $MainColor;
+    color: $WhiteColor;
+    border: none;
+    padding: $fontSize-1 $fontSize-2;
+    border-radius: $Radius;
+
+    &:hover {
+        background-color: $PriceColor;
+    }
+
+    &:active {
+        background-color: $FooterColor;
+    }
+}
+
+article.titulo {
+    background-color: $WhiteColor;
+    border-radius: $Radius;
+    padding: $fontSize-2 $fontSize-1;
+    box-shadow: 0px 0px 15px 10px $CyanShadowColor;
+}
+
+h2 {
+    text-align: center;
+    font-size: 2.5rem;
+}
+
+span.blue-back {
+    color: $WhiteColor;
+    background-color: $MainColor;
+    padding: 2%;
+    border-radius: $Radius;
+}
+
+section.cards {
+    @include FlexPosition(column, space-around);
+
+    margin-top: 20%;
+}
+
+article {
+    &.card {
+        @include WidAndHeig(100%, 320px);
+
+        background-color: $WhiteColor;
+        border-radius: $Radius;
+        margin-bottom: 20%;
+
+        h3 {
+            @include FlexPosition(row, center);
+            @include WidAndHeig(auto, 15%);
+
+            background-color: $PurpleColor;
+            border-radius: $Radius $Radius 0 0;
+            font-size: $fontSize-1d8;
+            color: $WhiteColor;
+        }
+    }
+
+    &.card-plano {
+        @include FlexPosition(column, space-around);
+        @include WidAndHeig(90%, 500px);
+
+        background-color: $WhiteColor;
+        border-radius: $Radius;
+        margin-bottom: 20%;
+        padding: 5%;
+    }
+}
+
+img.card-img {
+    @include WidAndHeig(100px, 100px);
+
+    border-radius: $Radius;
+}
+
+.card-titulo {
+    background-color: $WhiteColor;
+    color: $MainColor;
+    padding: 2% 5%;
+    border-radius: $Radius;
+    box-shadow: 0px 5px 5px 5px #00000040;
+    font-size: $fontSize-2;
+}
+
+article.card-plano ul {
+    @include FlexPosition(column, center);
+    @include WidAndHeig(80%, auto);
+
+    border-top: 2px solid #000;
+    padding-top: 15%;
+
+    li {
+        @include FlexPosition(row, space-between);
+        @include WidAndHeig(80%, auto);
+
+        list-style: none;
+        list-style-position: inside;
+        font-size: 1.2rem;
+    }
+}
+
+a.card-preco {
+    background-color: $PriceColor;
+    border-radius: $Radius;
+    color: $WhiteColor;
+    text-decoration: none;
+    font-size: $fontSize-1d8;
+    padding: 2% 5%;
+}
+
+.gradient {
+    @include WidAndHeig(auto, 25vh);
+    background: linear-gradient(180deg, $BackgroundColor 0%, $FooterColor 100%);
+}
+
+footer {
+    background-color: $FooterColor;
+    padding-bottom: $fontSize-2;
+
+    section {
+        @include FlexPosition(column, center);
+    }
+
+    .logo-footer {
+        background-color: $WhiteColor;
+        padding: $fontSize-1;
+        border-radius: $Radius;
+    }
+
+    article {
+        &.social-media {
+            @include FlexPosition(column, space-around);
+            @include WidAndHeig(auto, 30vh);
+        }
+
+        &.contact {
+            @include WidAndHeig(auto, 15vh);
+        }
+    }
+
+    ul {
+        @include FlexPosition(column, space-around);
+        @include WidAndHeig(auto, 70%);
+    }
+
+    .media ul li {
+        text-align: center;
+    }
+
+    a {
+        text-decoration: none;
+        color: $MainColor;
+    }
+
+    img {
+        @include WidAndHeig(auto, 100px);
+    }
+}
+
+h4 {
+    color: $WhiteColor;
+    font-size: 1.2rem;
+}
+
+section.splide {
+    @include WidAndHeig(100%, auto);
+
+    margin: 5vh 0 0 0;
+    border-radius: $Radius;
+}
+
+li.splide__slide, ul.splide__list {
+    @include WidAndHeig(100%, auto);
+
+    border-radius: $Radius;
+}
+
+li.splide__slide {
+    margin-right: $fontSize-2;
+    
+    img {
+        @include WidAndHeig(100%, auto);
+
+        border-radius: $Radius;
+    }
+}
+
+.hidden {
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: all 1s;
+}
+
+.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/*Tablet*/
+@media only screen and (min-width: 425px) {
+    .mobile-nav.ativo {
+        right: 20vw;
+    }
+
+    .espaLateral {
+        margin: 0 10vw;
+    }
+
+    .cards {
+        margin: 0 5vw;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .mobile-nav.ativo {
+        right: 20vw;
+    }
+
+    .espaLateral {
+        margin: 0 20vw;
+    }
+
+    .cards {
+        margin: 0 5vw;
+    }
+}
+
+/*Desktop*/
+@media only screen and (min-width: 1024px) {
+    #hamburguer-menu, .hamburguer, .barra, .mobile-nav {
+        display: none;
+    }
+
+    li.desktop,
+    li.desktop a {
+        @include FlexPosition(row, center);
+
+        padding-bottom: 2px;
+        background-image: linear-gradient($MainColor 0 0);
+        background-position: 0 100%;
+        background-size: 0% 2px;
+        background-repeat: no-repeat;
+        transition: background-size 0.3s, background-position 0s 0.3s;
+    }
+
+    li.desktop a:hover {
+        background-position: 100% 100%;
+        background-size: 100% 3px;
+    }
+
+    section#HOME {
+        margin: 12.5vh 0;
+    }
+
+    nav ul {
+        @include FlexPosition(row-reverse, space-around);
+
+        li {
+            width: auto;
+        }
+    }
+
+    header nav a {
+        text-decoration: none;
+        color: $MainColor;
+        font-size: $fontSize-2;
+    }
+
+    .titulo {
+        margin: 0 25vw;
+    }
+
+    .espaLateral {
+        margin: 0;
+    }
+
+    #METAS .cards {
+        flex-direction: row;
+        margin: 15vh 0;
+    }
+
+    .cards .card {
+        @include WidAndHeig(20vw, 320px);
+
+        margin-bottom: 0;
+    }
+
+    .card-form {
+        @include WidAndHeig(20rem, 70vh);
+
+        h3 {
+        font-size: $fontSize-1d8;
+        }
+    }
+
+    .submitBtn button {
+        font-size: $fontSize-1d8;
+    }
+
+    #PLANOS .cards {
+        @include FlexPosition(row, space-evenly);
+        @include WidAndHeig(90vw, auto);
+
+        margin: 15vh auto;
+    }
+
+    .cards .card-plano {
+        &[class*="maior"] {
+            height: 85vh;
+        }
+
+        &[class*="menor"] {
+            height: 75vh;
+        }
+    }
+
+    article.card-plano {
+        padding: .5%;
+        width: 22.5vw;
+        margin-bottom: 0;
+    }
+
+    footer section {
+        @include WidAndHeig(100%, auto);
+
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-around;
+        width: 100%;
+    }
+}
