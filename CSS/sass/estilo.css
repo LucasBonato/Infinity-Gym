@@ -20,6 +20,10 @@
   border: 2px solid #262626;
 }
 
+html {
+  background-color: #101010;
+}
+
 body {
   background-color: #101010;
   margin-top: 70px;
@@ -188,7 +192,7 @@ h1 {
   height: 350px;
   background-color: #F3F3F3;
   border-radius: 20px;
-  padding: 1.5rem;
+  padding: 0.5rem 1.5rem;
   margin: 2.5rem 0;
 }
 .card-form h3 {
@@ -328,11 +332,16 @@ section.cards {
 }
 
 article.card {
-  width: 100%;
-  height: 320px;
-  background-color: #F3F3F3;
+  width: auto;
+  height: auto;
+  background-color: transparent;
   border-radius: 20px;
   margin-bottom: 20%;
+}
+article.card img {
+  width: 100%;
+  height: auto;
+  border-radius: 0 0 20px 20px;
 }
 article.card h3 {
   display: flex;
@@ -403,6 +412,14 @@ a.card-preco {
   text-decoration: none;
   font-size: 1.8rem;
   padding: 2% 5%;
+}
+a.card-preco:hover {
+  background-color: #48919E;
+  transform: scale(1.1);
+  transition: transform 1s;
+}
+a.card-preco:active {
+  background-color: #262626;
 }
 
 .gradient {
@@ -477,12 +494,14 @@ li.splide__slide, ul.splide__list {
 }
 
 li.splide__slide {
-  margin-right: 2rem;
-}
-li.splide__slide img {
   width: 100%;
   height: auto;
+  margin-right: 2rem;
   border-radius: 20px;
+}
+
+.splide_desktop {
+  display: none;
 }
 
 .hidden {
@@ -567,9 +586,24 @@ li.splide__slide img {
     margin: 15vh 0;
   }
   .cards .card {
-    width: 20vw;
-    height: 320px;
     margin-bottom: 0;
+  }
+  .cards .card img {
+    width: 100%;
+    height: auto;
+    border-radius: 0 0 20px 20px;
+    filter: grayscale(100%);
+    cursor: pointer;
+  }
+  .cards .card img:hover {
+    filter: grayscale(0);
+    transition: all 1s;
+  }
+  .cards .card:hover {
+    background-color: rgba(84, 232, 170, 0.2);
+    box-shadow: 0px 0px 15px 10px rgba(84, 232, 170, 0.2);
+    transform: scale(1.05);
+    transition: all 1s;
   }
   .card-form {
     width: 20rem;
@@ -590,6 +624,10 @@ li.splide__slide img {
     height: auto;
     margin: 15vh auto;
   }
+  .cards .card-plano:hover {
+    box-shadow: 0px 0px 15px 10px rgba(84, 232, 170, 0.2);
+    transition: all 1s;
+  }
   .cards .card-plano[class*=maior] {
     height: 85vh;
   }
@@ -608,5 +646,11 @@ li.splide__slide img {
     align-items: flex-start;
     justify-content: space-around;
     width: 100%;
+  }
+  .splide_desktop {
+    display: block;
+  }
+  .splide_mobile {
+    display: none;
   }
 }/*# sourceMappingURL=estilo.css.map */

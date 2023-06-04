@@ -27,6 +27,8 @@
     }
   }
 
+  html { background-color: $BackgroundColor;}
+
   body {
     background-color: $BackgroundColor;
     margin-top: 70px;
@@ -176,7 +178,7 @@ h1 {
 
     background-color: $WhiteColor;
     border-radius: $Radius;
-    padding: 1.5rem;
+    padding: .5rem 1.5rem;
     margin: 2.5rem 0;
 
     h3 {
@@ -307,11 +309,17 @@ section.cards {
 
 article {
     &.card {
-        @include WidAndHeig(100%, 320px);
+        @include WidAndHeig(auto, auto);
 
-        background-color: $WhiteColor;
+        background-color: transparent;
         border-radius: $Radius;
         margin-bottom: 20%;
+
+        img {
+            @include WidAndHeig(100%, auto);
+            
+            border-radius: 0 0 20px 20px;
+        }
 
         h3 {
             @include FlexPosition(row, center);
@@ -374,6 +382,16 @@ a.card-preco {
     text-decoration: none;
     font-size: $fontSize-1d8;
     padding: 2% 5%;
+
+    &:hover {
+        background-color: $MainColor;
+        transform: scale(1.1);
+        transition: transform 1s;
+    }
+    
+    &:active {
+        background-color: $FooterColor;
+    }
 }
 
 .gradient {
@@ -444,13 +462,14 @@ li.splide__slide, ul.splide__list {
 }
 
 li.splide__slide {
-    margin-right: $fontSize-2;
+    @include WidAndHeig(100%, auto);
     
-    img {
-        @include WidAndHeig(100%, auto);
+    margin-right: $fontSize-2;
+    border-radius: $Radius;
+}
 
-        border-radius: $Radius;
-    }
+.splide_desktop {
+    display: none;
 }
 
 .hidden {
@@ -490,7 +509,7 @@ li.splide__slide {
 
     .cards {
         margin: 0 5vw;
-    }
+    }   
 }
 
 // * Desktop
@@ -551,9 +570,28 @@ li.splide__slide {
     }
 
     .cards .card {
-        @include WidAndHeig(20vw, 320px);
-
         margin-bottom: 0;
+        
+        img {
+            @include WidAndHeig(100%, auto);
+            
+            border-radius: 0 0 20px 20px;
+            filter: grayscale(100%);
+            cursor: pointer;
+            
+            &:hover {
+                filter: grayscale(0);
+                transition: all 1s;
+            }
+        }
+
+        &:hover {
+            background-color: $CyanShadowColor;
+            box-shadow: 0px 0px 15px 10px $CyanShadowColor;
+            transform: scale(1.05);
+            transition: all 1s;
+        }
+
     }
 
     .card-form {
@@ -576,6 +614,11 @@ li.splide__slide {
     }
 
     .cards .card-plano {
+        &:hover {
+            box-shadow: 0px 0px 15px 10px $CyanShadowColor;
+            transition: all 1s;
+        }
+
         &[class*="maior"] {
             height: 85vh;
         }
@@ -598,5 +641,13 @@ li.splide__slide {
         align-items: flex-start;
         justify-content: space-around;
         width: 100%;
+    }
+
+    .splide_desktop {
+        display: block; 
+    }
+
+    .splide_mobile {
+        display: none;
     }
 }
