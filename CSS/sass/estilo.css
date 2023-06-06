@@ -27,6 +27,7 @@ html {
 body {
   background-color: #101010;
   margin-top: 70px;
+  overflow-x: hidden;
 }
 body ul {
   list-style: none;

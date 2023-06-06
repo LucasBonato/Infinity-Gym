@@ -32,6 +32,7 @@
   body {
     background-color: $BackgroundColor;
     margin-top: 70px;
+    overflow-x: hidden;
 
     ul {list-style: none;}
     a {text-decoration: none;}
