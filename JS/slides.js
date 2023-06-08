@@ -116,10 +116,6 @@ function setPositionByIndex(doScrollIntoView = false) {
   prevTranslate = currentTranslate
 
   setSliderPosition()
-
-  if (doScrollIntoView === true) {
-    baseElem.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" })
-  }
 }
 
 function setSliderPosition() {
