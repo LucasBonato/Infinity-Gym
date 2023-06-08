@@ -496,6 +496,16 @@ h4 {
   transform: translateX(0);
 }
 
+.one img{
+    content: url(../../img/media-query/slide/mobile-man.jpg);
+}
+.two img{
+    content: url(../../img/media-query/slide/mobile-weight.jpg);
+}
+.three img{
+    content: url(../../img/media-query/slide/mobile-Woman.jpg);
+}
+
 // * Tablet
 @media only screen and (min-width: 425px) {
     .mobile-nav.ativo {
