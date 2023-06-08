@@ -13,13 +13,3 @@ for(let i = 0; i < btnNav.length; i++){
         mobileNav.classList.toggle("ativo");
     });
 }
-
-const darkWhiteMode = matchMedia('(prefers-color-scheme: dark)');
-
-if(darkWhiteMode.matches) {
-    // Is dark
-    document.querySelector("link[rel='shortcut icon']").href = "./img/icons/Logo-white(64).ico";
-} else {
-    // Is not dark
-    document.querySelector("link[rel='shortcut icon']").href = "./img/Icons/LOGO(64).ico";
-}
