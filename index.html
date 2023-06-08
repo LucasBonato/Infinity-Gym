@@ -9,7 +9,6 @@
 
     <link rel="stylesheet" href="./CSS/sass/estilo.css">
     <link rel="shortcut icon" href="./img/Icons/LOGO(64).ico" type="image/x-icon">
-    <link rel="stylesheet" href="./node_modules/@splidejs/splide/dist/css/themes/splide-skyblue.min.css">
 
     <script defer src="./JS/goingIn.js"></script>
 </head>
@@ -42,22 +41,15 @@
         </ul>
     </nav>
     <main>
-        <section id="HOME">
+        <div class="container">
             <h1>INFINITY</h1>
-            <section class="slide slide_desktop">
-                      <ul class="slide_list">
-                          <li class="slide_item"><img src="./img/men-GYM-1920x600.jpg" alt=""></li>
-                          <li class="slide_item"><img src="./img/whieght-GYM1920x600.jpg" alt=""></li>
-                          <li class="slide_item"><img src="./img/woman-GYM-1920x600.jpg" alt=""></li>
-                      </ul>
-              </section>
-              <section class="slide slide_mobile">
-                <ul class="slide_list">
-                    <li class="slide_item"><img src="./img/media-query/slide/tab-musculacao-700x600.jpg" alt=""></li>
-                    <li class="slide_item"><img src="./img/media-query/slide/tab-woman-780x600.jpg" alt=""></li>
-                    <li class="slide_item"><img src="./img/media-query/slide/tb-aparelhos-fitness-academia-02.jpg" alt=""></li>
-                </ul>
-        </section>
+        </div>
+        <section id="HOME">
+                <section class="slider-container">
+                    <div class="slide one"><img src="" alt=""></div>
+                    <div class="slide two"><img src="" srcset="" alt=""></div>
+                    <div class="slide three"><img src="" srcset="" alt=""></div>
+                </section>
         </section>
         <div class="espaLateral">
             <section id="METAS">
@@ -116,17 +108,6 @@
                 <article class="titulo hidden">
                     <h2>LOCAIS</h2>
                 </article>
-                <!-- <article class="slide hidden">
-                    <section class="splide" aria-label="Splide Basic HTML Example">
-                        <div class="splide__track">
-                              <ul class="splide__list">
-                                  <li class="splide__slide"><img src="../img/men-GYM-1920x600.jpg" alt=""></li>
-                                  <li class="splide__slide"><img src="../img/whieght-GYM1920x600.jpg" alt=""></li>
-                                  <li class="splide__slide"><img src="../img/woman-GYM-1920x600.jpg" alt=""></li>
-                              </ul>
-                        </div>
-                      </section>
-                </article> -->
             </section>
             <section id="PLANOS">
                 <article class="titulo hidden">
@@ -194,7 +175,6 @@
             </article>
         </section>
     </footer>
-    <script src="./node_modules/@splidejs/splide/dist/js/splide.min.js"></script>
     <script src="./JS/index.js"></script>
     <script src="./JS/slides.js"></script>
     <script src="./JS/imc.js"></script>

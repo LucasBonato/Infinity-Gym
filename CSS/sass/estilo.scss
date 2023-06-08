@@ -11,6 +11,7 @@
     scroll-margin: 12.5vh;
     scrollbar-width: thin;
     scrollbar-color: $MainColor $FooterColor;
+    box-sizing: border-box;
   
     &::-webkit-scrollbar {
       width: 12px;
@@ -27,7 +28,7 @@
     }
   }
 
-  html { background-color: $BackgroundColor;}
+  html { background-color: $BackgroundColor; overflow-x: hidden;}
 
   body {
     background-color: $BackgroundColor;
@@ -152,10 +153,10 @@ li.desktop {
     @include WidAndHeig(10rem, 10rem);
 }
 
-section#HOME {
-    @include FlexPosition(column, center);
+div.container {
+    @include FlexPosition(row, center);
 
-    margin-top: 13vh;
+    margin-top: 12vh;
 }
 
 h1 {
@@ -163,6 +164,42 @@ h1 {
     font-size: $fontSize-h1;
     font-weight: 800;
     border-bottom: 5px solid $WhiteColor;
+}
+
+.slider-container {
+    height: 70vh;
+    display: inline-flex;
+    overflow-x: hidden;
+    scrollbar-width: none;
+    transform: translateX(0);
+    will-change: transform;
+    transition: transform 0.3s ease-out;
+    cursor: grab;
+}
+
+.slide{
+    max-height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.slide img{
+    max-width: 100%;
+    max-height: 100%;
+    transition: transform 0.3s ease-in-out;
+    border-radius: 20px;
+    user-select: none;
+}
+
+.grabbing {
+    cursor: grabbing;
+}
+
+.grabbing .slide img{
+    transform: scale(0.95);
 }
 
 .espaLateral {
@@ -449,30 +486,6 @@ h4 {
     font-size: 1.2rem;
 }
 
-section.splide {
-    @include WidAndHeig(100%, auto);
-
-    margin: 5vh 0 0 0;
-    border-radius: $Radius;
-}
-
-li.splide__slide, ul.splide__list {
-    @include WidAndHeig(100%, auto);
-
-    border-radius: $Radius;
-}
-
-li.splide__slide {
-    @include WidAndHeig(100%, auto);
-    
-    margin-right: $fontSize-2;
-    border-radius: $Radius;
-}
-
-.splide_desktop {
-    display: none;
-}
-
 .hidden {
   opacity: 0;
   transform: translateX(-100%);
@@ -497,6 +510,16 @@ li.splide__slide {
     .cards {
         margin: 0 5vw;
     }
+
+    .one img{
+        content: url(../../img/media-query/slide/tablet-lift.jpg);
+    }
+    .two img{
+        content: url(../../img/media-query/slide/tablet-up.jpg);
+    }
+    .three img{
+        content: url(../../img/media-query/slide/tablet-woman.jpg);
+    }
 }
 
 @media only screen and (min-width: 768px) {
@@ -510,7 +533,17 @@ li.splide__slide {
 
     .cards {
         margin: 0 5vw;
-    }   
+    }
+
+    .one img{
+        content: url(../../img/media-query/slide/tablet-lift.jpg);
+    }
+    .two img{
+        content: url(../../img/media-query/slide/tablet-up.jpg);
+    }
+    .three img{
+        content: url(../../img/media-query/slide/tablet-woman.jpg);
+    }
 }
 
 // * Desktop
@@ -534,10 +567,6 @@ li.splide__slide {
     li.desktop a:hover {
         background-position: 100% 100%;
         background-size: 100% 3px;
-    }
-
-    section#HOME {
-        margin: 12.5vh 0;
     }
 
     header {
@@ -644,11 +673,21 @@ li.splide__slide {
         width: 100%;
     }
 
-    .splide_desktop {
-        display: block; 
+    .slide {
+        padding: 1rem;
     }
 
-    .splide_mobile {
+    .slide_mobile {
         display: none;
+    }
+
+    .one img{
+        content: url(../../img/men-GYM-1920x600.jpg);
+    }
+    .two img{
+        content: url(../../img/whieght-GYM1920x600.jpg);
+    }
+    .three img{
+        content: url(../../img/woman-GYM-1920x600.jpg);
     }
 }
