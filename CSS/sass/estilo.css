@@ -193,6 +193,7 @@ h1 {
   align-items: center;
   justify-content: center;
   padding: 1rem;
+  touch-action: none;
 }
 
 .slide img {

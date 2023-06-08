@@ -9,51 +9,99 @@ let isDragging = false,
   animationID,
   currentIndex = 0
 
+
 // add our event listeners
 slides.forEach((slide, index) => {
   const slideImage = slide.querySelector('img')
   // disable default image drag
   slideImage.addEventListener('dragstart', (e) => e.preventDefault())
+  if(slides.length >= 2) {
   // pointer events
-  slide.addEventListener('pointerdown', pointerDown(index))
-  slide.addEventListener('pointerup', pointerUp)
-  slide.addEventListener('pointerleave', pointerUp)
-  slide.addEventListener('pointermove', pointerMove)
+    slide.addEventListener('touchstart', touchStart(index))
+    slide.addEventListener('touchend', touchEnd)
+    slide.addEventListener('touchmove', touchMove)
+    // mouse events
+    slide.addEventListener('mousedown', touchStart(index))
+    slide.addEventListener('mouseup', mouseUp)
+    slide.addEventListener('mousemove', touchMove)
+    slide.addEventListener('mouseleave', mouseLeave)
+  }
 })
 
 // make responsive to viewport changes
 window.addEventListener('resize', setPositionByIndex)
 
 // use a HOF so we have index in a closure
-function pointerDown(index) {
+function getPositionX(event) {
+  return event.type.includes('mouse') ? event.pageX : event.touches[0].clientX
+}
+
+function goPrev(event) {
+  event.preventDefault()
+  event.stopPropagation()
+  if (currentIndex > 0) {
+    currentIndex -= 1
+    setPositionByIndex(true)
+  }
+  return false
+}
+
+function goNext(event) {
+  event.preventDefault()
+  event.stopPropagation()
+  if (currentIndex < slides.length - 1) {
+    currentIndex += 1
+    setPositionByIndex(true)
+  }
+  return false
+}
+
+// use a HOF so we have index in a closure
+function touchStart(index) {
   return function (event) {
     currentIndex = index
-    startPos = event.clientX
+    startPos = getPositionX(event)
     isDragging = true
     animationID = requestAnimationFrame(animation)
     slider.classList.add('grabbing')
   }
 }
 
-function pointerMove(event) {
+function touchMove(event) {
   if (isDragging) {
-    const currentPosition = event.clientX
+    const currentPosition = getPositionX(event)
     currentTranslate = prevTranslate + currentPosition - startPos
   }
 }
 
-function pointerUp() {
+function touchEnd() {
+  endGrab()
+  setPositionByIndex(false)
+}
+
+function mouseUp() {
+  endGrab()
+  setPositionByIndex(true)
+}
+
+function mouseLeave() {
+  endGrab()
+}
+
+function endGrab() {
   cancelAnimationFrame(animationID)
   isDragging = false
   const movedBy = currentTranslate - prevTranslate
 
   // if moved enough negative then snap to next slide if there is one
-  if (movedBy < -100 && currentIndex < slides.length - 1) currentIndex += 1
+  if (movedBy < -50 && currentIndex < slides.length - 1) {
+    currentIndex += 1
+  }
 
   // if moved enough positive then snap to previous slide if there is one
-  if (movedBy > 100 && currentIndex > 0) currentIndex -= 1
-
-  setPositionByIndex()
+  if (movedBy > 50 && currentIndex > 0) {
+    currentIndex -= 1
+  }
 
   slider.classList.remove('grabbing')
 }
@@ -63,10 +111,15 @@ function animation() {
   if (isDragging) requestAnimationFrame(animation)
 }
 
-function setPositionByIndex() {
+function setPositionByIndex(doScrollIntoView = false) {
   currentTranslate = currentIndex * -window.innerWidth
   prevTranslate = currentTranslate
+
   setSliderPosition()
+
+  if (doScrollIntoView === true) {
+    baseElem.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" })
+  }
 }
 
 function setSliderPosition() {
