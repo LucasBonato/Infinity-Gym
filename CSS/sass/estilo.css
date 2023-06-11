@@ -517,14 +517,28 @@ footer .logo-footer {
 footer article.social-media {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: auto;
   align-items: center;
   width: auto;
-  height: 30vh;
+  height: 20vh;
 }
 footer article.contact {
+  display: flex;
+  flex-direction: column;
+  justify-content: auto;
+  align-items: center;
   width: auto;
   height: 15vh;
+}
+footer article.local {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+footer article.local iframe {
+  border: none;
+  border-radius: 20px;
 }
 footer ul {
   display: flex;

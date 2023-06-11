@@ -485,12 +485,22 @@ footer {
 
     article {
         &.social-media {
-            @include FlexPosition(column, space-around);
-            @include WidAndHeig(auto, 30vh);
+            @include FlexPosition(column, auto);
+            @include WidAndHeig(auto, 20vh);
         }
 
         &.contact {
+            @include FlexPosition(column, auto);
             @include WidAndHeig(auto, 15vh);
+        }
+
+        &.local {
+            @include FlexPosition(column, space-around);
+
+            iframe {
+                border: none;
+                border-radius: $Radius;
+            }
         }
     }
 

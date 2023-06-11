@@ -22,7 +22,7 @@ slidesLocal.forEach((slideLocal, indexLocal) => {
         slideLocal.addEventListener('touchmove', touchMoveLocal)
         // mouse events
         slideLocal.addEventListener('mousedown', touchStartLocal(indexLocal))
-        slideLocal.addEventListener('mouseup', mouseUp)
+        slideLocal.addEventListener('mouseup', mouseUpLocal)
         slideLocal.addEventListener('mousemove', touchMoveLocal)
         slideLocal.addEventListener('mouseleave', mouseLeaveLocal)
     }
