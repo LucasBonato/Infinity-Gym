@@ -186,6 +186,17 @@ h1 {
   cursor: grab;
 }
 
+.slider-container-local {
+  height: auto;
+  display: inline-flex;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  transform: translateX(0);
+  will-change: transform;
+  transition: transform 0.3s ease-out;
+  cursor: grab;
+}
+
 .slide {
   max-height: 100vh;
   width: 100vw;
@@ -203,11 +214,32 @@ h1 {
   border-radius: 20px;
 }
 
+.slide-local {
+  max-height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  touch-action: none;
+}
+
+.slide-local img {
+  max-width: 100%;
+  max-height: 100%;
+  transition: transform 0.3s ease-in-out;
+  border-radius: 20px;
+}
+
 .grabbing {
   cursor: grabbing;
 }
 
 .grabbing .slide img {
+  transform: scale(0.95);
+}
+
+.grabbing .slide-local img {
   transform: scale(0.95);
 }
 
@@ -231,7 +263,7 @@ h1 {
   height: 350px;
   background-color: #F3F3F3;
   border-radius: 20px;
-  padding: 0.5rem 1.5rem;
+  padding: 0.5rem 0.5rem;
   margin: 2.5rem 0;
 }
 .card-form h3 {
@@ -542,6 +574,18 @@ h4 {
   content: url(../../img/media-query/slide/mobile-Woman.jpg);
 }
 
+.one-local img {
+  content: url(../../img/media-query/slide/mobile-man.jpg);
+}
+
+.two-local img {
+  content: url(../../img/media-query/slide/mobile-weight.jpg);
+}
+
+.three-local img {
+  content: url(../../img/media-query/slide/mobile-Woman.jpg);
+}
+
 @media only screen and (min-width: 425px) {
   .mobile-nav.ativo {
     right: 20vw;
@@ -559,6 +603,15 @@ h4 {
     content: url(../../img/media-query/slide/tablet-up.jpg);
   }
   .three img {
+    content: url(../../img/media-query/slide/tablet-woman.jpg);
+  }
+  .one-local img {
+    content: url(../../img/media-query/slide/tablet-lift.jpg);
+  }
+  .two-local img {
+    content: url(../../img/media-query/slide/tablet-up.jpg);
+  }
+  .three-local img {
     content: url(../../img/media-query/slide/tablet-woman.jpg);
   }
 }
@@ -579,6 +632,15 @@ h4 {
     content: url(../../img/media-query/slide/tablet-up.jpg);
   }
   .three img {
+    content: url(../../img/media-query/slide/tablet-woman.jpg);
+  }
+  .one-local img {
+    content: url(../../img/media-query/slide/tablet-lift.jpg);
+  }
+  .two-local img {
+    content: url(../../img/media-query/slide/tablet-up.jpg);
+  }
+  .three-local img {
     content: url(../../img/media-query/slide/tablet-woman.jpg);
   }
 }
@@ -692,8 +754,8 @@ h4 {
   .slide {
     padding: 1rem;
   }
-  .slide_mobile {
-    display: none;
+  .slide-local {
+    padding: 1rem;
   }
   .one img {
     content: url(../../img/men-GYM-1920x600.jpg);
@@ -702,6 +764,15 @@ h4 {
     content: url(../../img/whieght-GYM1920x600.jpg);
   }
   .three img {
+    content: url(../../img/woman-GYM-1920x600.jpg);
+  }
+  .one-local img {
+    content: url(../../img/men-GYM-1920x600.jpg);
+  }
+  .two-local img {
+    content: url(../../img/whieght-GYM1920x600.jpg);
+  }
+  .three-local img {
     content: url(../../img/woman-GYM-1920x600.jpg);
   }
 }/*# sourceMappingURL=estilo.css.map */

@@ -41,7 +41,7 @@ function goPrev(event) {
   event.stopPropagation()
   if (currentIndex > 0) {
     currentIndex -= 1
-    setPositionByIndex(true)
+    setPositionByIndex()
   }
   return false
 }
@@ -51,7 +51,7 @@ function goNext(event) {
   event.stopPropagation()
   if (currentIndex < slides.length - 1) {
     currentIndex += 1
-    setPositionByIndex(true)
+    setPositionByIndex()
   }
   return false
 }
@@ -76,12 +76,12 @@ function touchMove(event) {
 
 function touchEnd() {
   endGrab()
-  setPositionByIndex(false)
+  setPositionByIndex()
 }
 
 function mouseUp() {
   endGrab()
-  setPositionByIndex(true)
+  setPositionByIndex()
 }
 
 function mouseLeave() {
@@ -111,7 +111,7 @@ function animation() {
   if (isDragging) requestAnimationFrame(animation)
 }
 
-function setPositionByIndex(doScrollIntoView = false) {
+function setPositionByIndex() {
   currentTranslate = currentIndex * -window.innerWidth
   prevTranslate = currentTranslate
 
