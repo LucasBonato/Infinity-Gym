@@ -9,7 +9,6 @@ let isDragging = false,
   animationID,
   currentIndex = 0
 
-
 // add our event listeners
 slides.forEach((slide, index) => {
   const slideImage = slide.querySelector('img')

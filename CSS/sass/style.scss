@@ -414,7 +414,7 @@ article {
 }
 
 img.card-img {
-    @include WidAndHeig(100px, 100px);
+    @include WidAndHeig(150px, 150px);
 
     border-radius: $Radius;
 }
@@ -422,18 +422,18 @@ img.card-img {
 .card-titulo {
     background-color: $WhiteColor;
     color: $MainColor;
-    padding: 2% 5%;
+    padding: .5rem 5%;
     border-radius: $Radius;
     box-shadow: 0px 5px 5px 5px #00000040;
     font-size: $fontSize-2;
 }
 
 article.card-plano ul {
-    @include FlexPosition(column, center);
-    @include WidAndHeig(80%, auto);
+    @include FlexPosition(column, space-evenly);
+    @include WidAndHeig(90%, 15rem);
 
     border-top: 2px solid #000;
-    padding-top: 15%;
+    padding-top: 2.5rem;
 
     li {
         @include FlexPosition(row, space-between);

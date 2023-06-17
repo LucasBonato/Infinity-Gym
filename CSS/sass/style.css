@@ -440,15 +440,15 @@ article.card-plano {
 }
 
 img.card-img {
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
   border-radius: 20px;
 }
 
 .card-titulo {
   background-color: #F3F3F3;
   color: #48919E;
-  padding: 2% 5%;
+  padding: 0.5rem 5%;
   border-radius: 20px;
   box-shadow: 0px 5px 5px 5px rgba(0, 0, 0, 0.2509803922);
   font-size: 2rem;
@@ -457,12 +457,12 @@ img.card-img {
 article.card-plano ul {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
-  width: 80%;
-  height: auto;
+  width: 90%;
+  height: 15rem;
   border-top: 2px solid #000;
-  padding-top: 15%;
+  padding-top: 2.5rem;
 }
 article.card-plano ul li {
   display: flex;
@@ -789,4 +789,4 @@ h4 {
   .three-local img {
     content: url(../../img/woman-GYM-1920x600.jpg);
   }
-}/*# sourceMappingURL=estilo.css.map */
+}/*# sourceMappingURL=style.css.map */
