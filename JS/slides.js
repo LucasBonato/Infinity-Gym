@@ -7,7 +7,9 @@ let isDragging = false,
   currentTranslate = 0,
   prevTranslate = 0,
   animationID,
-  currentIndex = 0
+  currentIndex = 0,
+  startPosY = 0,
+  isVerticalDrag = false
 
 // add our event listeners
 slides.forEach((slide, index) => {
@@ -55,27 +57,51 @@ function goNext(event) {
   return false
 }
 
+
 // use a HOF so we have index in a closure
 function touchStart(index) {
   return function (event) {
     currentIndex = index
     startPos = getPositionX(event)
+    startPosY = event.touches[0].clientY
     isDragging = true
+    isVerticalDrag = false
     animationID = requestAnimationFrame(animation)
     slider.classList.add('grabbing')
+    
   }
 }
 
+ 
 function touchMove(event) {
+  
   if (isDragging) {
+    
+
     const currentPosition = getPositionX(event)
-    currentTranslate = prevTranslate + currentPosition - startPos
+     
+    const currentY = event.touches[0].clientY  
+    const deltaX = currentPosition - startPos
+    const deltaY = currentY - startPosY 
+
+    if (Math.abs(deltaY) > Math.abs(deltaX) && !isVerticalDrag) {
+      isVerticalDrag = true;
+      endGrab();
+      window.scroll(0, -deltaY * 25);
+      startPosY = currentY;
+      return;
+    }
+
+    currentTranslate = prevTranslate + deltaX
+    setSliderPosition()
   }
 }
 
 function touchEnd() {
-  endGrab()
-  setPositionByIndex()
+ if (!isVerticalDrag) {
+    endGrab();
+    setPositionByIndex();
+  } 
 }
 
 function mouseUp() {
