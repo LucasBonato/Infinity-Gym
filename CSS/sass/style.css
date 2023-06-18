@@ -432,7 +432,7 @@ article.card-plano {
   justify-content: space-around;
   align-items: center;
   width: 90%;
-  height: 500px;
+  height: 35rem;
   background-color: #F3F3F3;
   border-radius: 20px;
   margin-bottom: 20%;
@@ -440,8 +440,8 @@ article.card-plano {
 }
 
 img.card-img {
-  width: 150px;
-  height: 150px;
+  width: 5rem;
+  height: 5rem;
   border-radius: 20px;
 }
 
