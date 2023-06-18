@@ -24,7 +24,7 @@ slides.forEach((slide, index) => {
     // mouse events
     slide.addEventListener('mousedown', touchStart(index))
     slide.addEventListener('mouseup', mouseUp)
-    slide.addEventListener('mousemove', touchMove)
+    slide.addEventListener('mousemove', mouseMove)
     slide.addEventListener('mouseleave', mouseLeave)
   }
 })
@@ -35,6 +35,10 @@ window.addEventListener('resize', setPositionByIndex)
 // use a HOF so we have index in a closure
 function getPositionX(event) {
   return event.type.includes('mouse') ? event.pageX : event.touches[0].clientX
+}
+
+function getPositionY(event) {
+  return event.type.includes('mouse') ? event.pageY : event.touches[0].clientY
 }
 
 function goPrev(event) {
@@ -63,12 +67,19 @@ function touchStart(index) {
   return function (event) {
     currentIndex = index
     startPos = getPositionX(event)
-    startPosY = event.touches[0].clientY
+    startPosY = getPositionY(event)
     isDragging = true
     isVerticalDrag = false
     animationID = requestAnimationFrame(animation)
     slider.classList.add('grabbing')
     
+  }
+}
+
+function mouseMove(event) {
+  if (isDragging) {
+    const currentPosition = getPositionX(event)
+    currentTranslate = prevTranslate + currentPosition - startPos
   }
 }
 
@@ -80,7 +91,7 @@ function touchMove(event) {
 
     const currentPosition = getPositionX(event)
      
-    const currentY = event.touches[0].clientY  
+    const currentY = getPositionY(event)
     const deltaX = currentPosition - startPos
     const deltaY = currentY - startPosY 
 
@@ -123,7 +134,7 @@ function endGrab() {
     currentIndex += 1
   }
 
-  // if moved enough positive then snap to previous slide if there is one
+  // if moved enough positive then snap to previgitous slide if there is one
   if (movedBy > 50 && currentIndex > 0) {
     currentIndex -= 1
   }
