@@ -12,12 +12,15 @@ var radioGlo;
 buttonSub.addEventListener("click", () => {
     res.innerHTML = "";
 
-    const peso = inputPeso.value;
-    const altura = inputAltura.value;
+    let peso = inputPeso.value;
+    let altura = inputAltura.value;
+    peso = peso.replace(",", ".");
+    altura = altura.replace(",", ".");
+
 
     if(Verify(peso, altura) && RadioCheck(radioMasc, radioFem)) {
         if(isNaN(peso) || isNaN(altura)) {
-            alert("[ERROR]Só preencha os campos com números! Ex: (17.4)");
+            alert("[ERROR]Só preencha os campos com números!");
         } else {
             const numPeso = Number(peso);
             const numAltura = Number(altura);
@@ -52,7 +55,6 @@ const RadioCheck = (masc, fem) => {
 
 const Resposta = (P, H) => {
     let imc = P / (H * H);
-    console.log(imc);
 
     if (radioGlo == "M") {
         if(imc > 39.9){

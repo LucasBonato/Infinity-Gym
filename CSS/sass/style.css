@@ -260,7 +260,7 @@ h1 {
   justify-content: space-around;
   align-items: center;
   width: auto;
-  height: 350px;
+  height: 25rem;
   background-color: #F3F3F3;
   border-radius: 20px;
   padding: 0.5rem 0.5rem;
@@ -440,8 +440,8 @@ article.card-plano {
 }
 
 img.card-img {
-  width: 5rem;
-  height: 5rem;
+  width: 7rem;
+  height: 7rem;
   border-radius: 20px;
 }
 

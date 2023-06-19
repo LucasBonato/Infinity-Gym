@@ -244,7 +244,7 @@ h1 {
 
 .card-form {
     @include FlexPosition(column, space-around);
-    @include WidAndHeig(auto, 350px);
+    @include WidAndHeig(auto, 25rem);
 
     background-color: $WhiteColor;
     border-radius: $Radius;
@@ -404,7 +404,7 @@ article {
 
     &.card-plano {
         @include FlexPosition(column, space-around);
-        @include WidAndHeig(90%, 500px);
+        @include WidAndHeig(90%, 35rem);
 
         background-color: $WhiteColor;
         border-radius: $Radius;
@@ -414,7 +414,7 @@ article {
 }
 
 img.card-img {
-    @include WidAndHeig(150px, 150px);
+    @include WidAndHeig(7rem, 7rem);
 
     border-radius: $Radius;
 }
