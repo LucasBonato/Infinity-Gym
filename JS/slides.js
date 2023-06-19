@@ -1,7 +1,6 @@
 const slider = document.querySelector('.slider-container'),
   slides = Array.from(document.querySelectorAll('.slide'));
 
-// set up our state
 let isDragging = false,
   startPos = 0,
   currentTranslate = 0,
@@ -68,7 +67,6 @@ function touchStart(index) {
     isVerticalDrag = false;
     animationID = requestAnimationFrame(animation);
     slider.classList.add('grabbing');
-    
   }
 }
 
@@ -79,11 +77,8 @@ function mouseMove(event) {
   }
 }
 
- 
 function touchMove(event) {
-  
   if (isDragging) {
-    
     const currentPosition = getPositionX(event);
     const currentY = getPositionY(event);
     const deltaX = currentPosition - startPos;
@@ -92,7 +87,7 @@ function touchMove(event) {
     if (Math.abs(deltaY) > Math.abs(deltaX) && !isVerticalDrag) {
       isVerticalDrag = true;
       endGrab();
-      window.scroll(0, -deltaY * 30);
+      window.scrollBy(0, -deltaY * 30);
       startPosY = currentY;
       return;
     }

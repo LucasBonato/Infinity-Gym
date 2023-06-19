@@ -1,123 +1,146 @@
 const sliderLocal = document.querySelector('.slider-container-local'),
-    slidesLocal = Array.from(document.querySelectorAll('.slide-local'))
+    slidesLocal = Array.from(document.querySelectorAll('.slide-local'));
 
-// set up our state
 let isDraggingLocal = false,
     startPosLocal = 0,
     currentTranslateLocal = 0,
     prevTranslateLocal = 0,
     animationIDLocal,
-    currentIndexLocal = 0
+    currentIndexLocal = 0,
+    startPosYLocal = 0,
+    isVerticalDragLocal = false;
 
-
-// add our event listeners
 slidesLocal.forEach((slideLocal, indexLocal) => {
-    const slideImageLocal = slideLocal.querySelector('img')
-    // disable default image drag
-    slideImageLocal.addEventListener('dragstart', (e) => e.preventDefaultLocal())
+    const slideImageLocal = slideLocal.querySelector('img');
+
+    slideImageLocal.addEventListener('dragstart', (e) => e.preventDefaultLocal());
+
     if(slidesLocal.length >= 2) {
-        // pointer events
-        slideLocal.addEventListener('touchstart', touchStartLocal(indexLocal))
-        slideLocal.addEventListener('touchend', touchEndLocal)
-        slideLocal.addEventListener('touchmove', touchMoveLocal)
-        // mouse events
-        slideLocal.addEventListener('mousedown', touchStartLocal(indexLocal))
-        slideLocal.addEventListener('mouseup', mouseUpLocal)
-        slideLocal.addEventListener('mousemove', touchMoveLocal)
-        slideLocal.addEventListener('mouseleave', mouseLeaveLocal)
+
+        slideLocal.addEventListener('touchstart', touchStartLocal(indexLocal));
+        slideLocal.addEventListener('touchend', touchEndLocal);
+        slideLocal.addEventListener('touchmove', touchMoveLocal);
+
+        slideLocal.addEventListener('mousedown', touchStartLocal(indexLocal));
+        slideLocal.addEventListener('mouseup', mouseUpLocal);
+        slideLocal.addEventListener('mousemove', mouseMoveLocal);
+        slideLocal.addEventListener('mouseleave', mouseLeaveLocal);
     }
-})
+});
 
-// make responsive to viewport changes
-window.addEventListener('resize', setPositionByIndexLocal)
+window.addEventListener('resize', setPositionByIndexLocal);
 
-// use a HOF so we have index in a closure
 function getPositionXLocal(event) {
-    return event.type.includes('mouse') ? event.pageX : event.touches[0].clientX
+    return event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
+}
+
+function getPositionYLocal(event) {
+    return event.type.includes('mouse') ? event.pageY : event.touches[0].clientY;
 }
 
 function goPrevLocal(event) {
-    event.preventDefaultLocal()
-    event.stopPropagationLocal()
+    event.preventDefaultLocal();
+    event.stopPropagationLocal();
     if (currentIndexLocal > 0) {
-        currentIndexLocal -= 1
-        setPositionByIndexLocal()
+        currentIndexLocal -= 1;
+        setPositionByIndexLocal();
     }
-    return false
+    return false;
 }
 
 function goNextLocal(event) {
-    event.preventDefaultLocal()
-    event.stopPropagationLocal()
+    event.preventDefaultLocal();
+    event.stopPropagationLocal();
     if (currentIndexLocal < slidesLocal.length - 1) {
-        currentIndexLocal += 1
-        setPositionByIndexLocal()
+        currentIndexLocal += 1;
+        setPositionByIndexLocal();
     }
-    return false
+    return false;
 }
 
-// use a HOF so we have index in a closure
 function touchStartLocal(index) {
     return function (event) {
-        currentIndexLocal = index
-        startPosLocal = getPositionXLocal(event)
-        isDraggingLocal = true
-        animationIDLocal = requestAnimationFrame(animationLocal)
-        sliderLocal.classList.add('grabbing')
+        currentIndexLocal = index;
+        startPosLocal = getPositionXLocal(event);
+        startPosYLocal = getPositionYLocal(event);
+        isDraggingLocal = true;
+        isVerticalDragLocal = false;
+        animationIDLocal = requestAnimationFrame(animationLocal);
+        sliderLocal.classList.add('grabbing');
+    }
+}
+
+function mouseMoveLocal(event) {
+    if (isDraggingLocal) {
+        const currentPositionLocal = getPositionXLocal(event);
+        currentTranslateLocal = prevTranslateLocal + currentPositionLocal - startPosLocal;
     }
 }
 
 function touchMoveLocal(event) {
     if (isDraggingLocal) {
-        const currentPositionLocal = getPositionXLocal(event)
-        currentTranslateLocal = prevTranslateLocal + currentPositionLocal - startPosLocal
+        const currentPositionLocal = getPositionXLocal(event);
+        const currentYLocal = getPositionYLocal(event);
+        const deltaXLocal = currentPositionLocal - startPosLocal;
+        const deltaYLocal = currentYLocal - startPosYLocal;
+
+        if(Math.abs(deltaYLocal) > Math.abs(deltaXLocal) && !isVerticalDragLocal) {
+            isVerticalDragLocal = true;
+            endGrabLocal();
+            window.scrollBy(0, -deltaYLocal * 30);
+            startPosYLocal = currentYLocal;
+            return;
+        }
+
+        currentTranslateLocal = prevTranslateLocal + deltaXLocal;
+        setSliderPositionLocal();
     }
 }
 
 function touchEndLocal() {
-    endGrabLocal()
-    setPositionByIndexLocal()
+    if(!isVerticalDragLocal) {
+        endGrabLocal();
+        setPositionByIndexLocal();
+    }
 }
 
 function mouseUpLocal() {
-    endGrabLocal()
-    setPositionByIndexLocal()
+    endGrabLocal();
+    setPositionByIndexLocal();
 }
 
 function mouseLeaveLocal() {
-    endGrabLocal()
+    endGrabLocal();
 }
 
 function endGrabLocal() {
-    cancelAnimationFrame(animationIDLocal)
-    isDraggingLocal = false
-    const movedByLocal = currentTranslateLocal - prevTranslateLocal
+    cancelAnimationFrame(animationIDLocal);
+    isDraggingLocal = false;
+    const movedByLocal = currentTranslateLocal - prevTranslateLocal;
 
-    // if moved enough negative then snap to next slide if there is one
     if (movedByLocal < -50 && currentIndexLocal < slidesLocal.length - 1) {
-        currentIndexLocal += 1
+        currentIndexLocal += 1;
     }
 
-    // if moved enough positive then snap to previous slide if there is one
     if (movedByLocal > 50 && currentIndexLocal > 0) {
-        currentIndexLocal -= 1
+        currentIndexLocal -= 1;
     }
 
-    sliderLocal.classList.remove('grabbing')
+    sliderLocal.classList.remove('grabbing');
 }
 
 function animationLocal() {
-    setSliderPositionLocal()
-    if (isDraggingLocal) requestAnimationFrame(animationLocal)
+    setSliderPositionLocal();
+    if (isDraggingLocal) requestAnimationFrame(animationLocal);
 }
 
 function setPositionByIndexLocal() {
-    currentTranslateLocal = currentIndexLocal * -window.innerWidth
-    prevTranslateLocal = currentTranslateLocal
+    currentTranslateLocal = currentIndexLocal * -window.innerWidth;
+    prevTranslateLocal = currentTranslateLocal;
 
-    setSliderPositionLocal()
+    setSliderPositionLocal();
 }
 
 function setSliderPositionLocal() {
-    sliderLocal.style.transform = `translateX(${currentTranslateLocal}px)`
+    sliderLocal.style.transform = `translateX(${currentTranslateLocal}px)`;
 }
