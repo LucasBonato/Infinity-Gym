@@ -32,7 +32,7 @@
 
   body {
     background-color: $BackgroundColor;
-    margin-top: 70px;
+    margin-top: 12.5vh;
     overflow-x: hidden;
 
     ul {list-style: none;}
@@ -41,7 +41,7 @@
 
 header {
     @include FlexPosition(row, center);
-    @include WidAndHeig(100%, 10vh);
+    @include WidAndHeig(100%, 12.5vh);
 
     position: fixed;
     background-color: $WhiteColor;
@@ -120,20 +120,23 @@ li.desktop {
 }
 
 .mobile-nav {
-    @include WidAndHeig(80vw, 100vh);
+    @include WidAndHeig(80vw, 88vh);
+    @include FlexPosition(column, auto);
+
+    right: 100vw;
+    top: 12.40vh;
 
     position: fixed;
-    right: 100vw;
-    display: block;
+    
     z-index: 10;
+    
     background-color: $WhiteColor;
-    top: 10vh;
-    border-right: 5px solid $MainColor;
+    border-right: .5rem solid $MainColor;
     border-radius: 0 0 $Radius 0;
     transition: 0.4s;
 
     &.ativo {
-        right: 12vh;
+        right: 20vw;
     }
 
     ul {
@@ -481,17 +484,22 @@ footer {
         background-color: $WhiteColor;
         padding: $fontSize-1;
         border-radius: $Radius;
+        margin-bottom: 2rem;
     }
 
     article {
         &.social-media {
             @include FlexPosition(column, auto);
-            @include WidAndHeig(auto, 20vh);
+            @include WidAndHeig(auto, 10rem);
+
+            ul {
+                @include FlexPosition(row, auto);
+            }
         }
 
         &.contact {
             @include FlexPosition(column, auto);
-            @include WidAndHeig(auto, 15vh);
+            @include WidAndHeig(auto, 10rem);
         }
 
         &.local {
@@ -501,6 +509,11 @@ footer {
                 border: none;
                 border-radius: $Radius;
             }
+        }
+
+        .icon-fot {
+            width: 4.5rem;
+            height: 4.5rem;
         }
     }
 

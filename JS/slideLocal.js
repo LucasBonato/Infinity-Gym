@@ -13,7 +13,7 @@ let isDraggingLocal = false,
 slidesLocal.forEach((slideLocal, indexLocal) => {
     const slideImageLocal = slideLocal.querySelector('img');
 
-    slideImageLocal.addEventListener('dragstart', (e) => e.preventDefaultLocal());
+    slideImageLocal.addEventListener('dragstart', (e) => e.preventDefault());
 
     if(slidesLocal.length >= 2) {
 
