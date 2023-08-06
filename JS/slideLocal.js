@@ -13,6 +13,8 @@ let isDraggingLocal = false,
     startPosYLocal = 0,
     isVerticalDragLocal = false;
 
+inpOne.checked = true;
+
 inpOne.addEventListener("click", () => {
     currentIndexLocal = 0;
     setPositionByIndexLocal();

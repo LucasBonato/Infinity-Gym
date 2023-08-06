@@ -13,6 +13,8 @@ let isDragging = false,
   startPosY = 0,
   isVerticalDrag = false;
 
+inpUm.checked = true;
+
 inpUm.addEventListener("click", () => {
   currentIndex = 0;
   setPositionByIndex();
