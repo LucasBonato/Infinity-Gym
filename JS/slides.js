@@ -1,7 +1,8 @@
 const slider = document.querySelector('.slider-container'),
   slides = Array.from(document.querySelectorAll('.slide')),
-  arrowLeft = document.getElementById('arrOne'),
-  arrowRight = document.getElementById('arrTwo');
+  inpUm = document.getElementById('oneHome'),
+  inpDois = document.getElementById('twoHome'),
+  inpTres = document.getElementById('threeHome');
 
 let isDragging = false,
   startPos = 0,
@@ -12,18 +13,19 @@ let isDragging = false,
   startPosY = 0,
   isVerticalDrag = false;
 
-arrowLeft.addEventListener("click", () => {
-  if (currentIndex > 0) {
-    currentIndex -= 1;
-    setPositionByIndex();
-  }
+inpUm.addEventListener("click", () => {
+  currentIndex = 0;
+  setPositionByIndex();
 });
 
-arrowRight.addEventListener("click", () => {
-  if (currentIndex < slides.length - 1) {
-    currentIndex += 1;
-    setPositionByIndex();
-  }
+inpDois.addEventListener("click", () => {
+  currentIndex = 1;
+  setPositionByIndex();
+});
+
+inpTres.addEventListener("click", () => {
+  currentIndex = 2;
+  setPositionByIndex();
 });
 
 
@@ -134,6 +136,18 @@ function animation() {
 function setPositionByIndex() {
   currentTranslate = currentIndex * -window.innerWidth;
   prevTranslate = currentTranslate;
+
+  switch(currentIndex) {
+    case 0:
+        inpUm.checked = true;
+    break;
+    case 1:
+        inpDois.checked = true;
+    break;
+    case 2:
+        inpTres.checked = true;
+    break;
+}
 
   setSliderPosition();
 }
