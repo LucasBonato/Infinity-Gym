@@ -1,5 +1,7 @@
 const slider = document.querySelector('.slider-container'),
-  slides = Array.from(document.querySelectorAll('.slide'));
+  slides = Array.from(document.querySelectorAll('.slide')),
+  arrowLeft = document.getElementById('arrOne'),
+  arrowRight = document.getElementById('arrTwo');
 
 let isDragging = false,
   startPos = 0,
@@ -9,6 +11,21 @@ let isDragging = false,
   currentIndex = 0,
   startPosY = 0,
   isVerticalDrag = false;
+
+arrowLeft.addEventListener("click", () => {
+  if (currentIndex > 0) {
+    currentIndex -= 1;
+    setPositionByIndex();
+  }
+});
+
+arrowRight.addEventListener("click", () => {
+  if (currentIndex < slides.length - 1) {
+    currentIndex += 1;
+    setPositionByIndex();
+  }
+});
+
 
 slides.forEach((slide, index) => {
   const slideImage = slide.querySelector('img');
@@ -36,26 +53,6 @@ function getPositionX(event) {
 
 function getPositionY(event) {
   return event.type.includes('mouse') ? event.pageY : event.touches[0].clientY;
-}
-
-function goPrev(event) {
-  event.preventDefault();
-  event.stopPropagation();
-  if (currentIndex > 0) {
-    currentIndex -= 1;
-    setPositionByIndex();
-  }
-  return false;
-}
-
-function goNext(event) {
-  event.preventDefault();
-  event.stopPropagation();
-  if (currentIndex < slides.length - 1) {
-    currentIndex += 1;
-    setPositionByIndex();
-  }
-  return false;
 }
 
 function touchStart(index) {

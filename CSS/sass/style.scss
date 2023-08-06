@@ -8,7 +8,7 @@
     padding: 0;
     font-family: 'Inter', sans-serif;
     scroll-behavior: smooth;
-    scroll-margin: 12.5vh;
+    scroll-margin: 13.5vh;
     scrollbar-width: thin;
     scrollbar-color: $MainColor $FooterColor;
     box-sizing: border-box;
@@ -169,17 +169,7 @@ h1 {
     border-bottom: 5px solid $WhiteColor;
 }
 
-.slider-container {
-    height: auto;
-    display: inline-flex;
-    overflow-x: hidden;
-    scrollbar-width: none;
-    transform: translateX(0);
-    will-change: transform;
-    transition: transform 0.3s ease-out;
-    cursor: grab;
-}
-
+.slider-container,
 .slider-container-local {
     height: auto;
     display: inline-flex;
@@ -191,23 +181,7 @@ h1 {
     cursor: grab;
 }
 
-.slide{
-    max-height: 100vh;
-    width: 100vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem;
-    touch-action: none;
-}
-
-.slide img{
-    max-width: 100%;
-    max-height: 100%;
-    transition: transform 0.3s ease-in-out;
-    border-radius: 20px;
-}
-
+.slide,
 .slide-local{
     max-height: 100vh;
     width: 100vw;
@@ -218,6 +192,7 @@ h1 {
     touch-action: none;
 }
 
+.slide img,
 .slide-local img{
     max-width: 100%;
     max-height: 100%;
@@ -229,12 +204,30 @@ h1 {
     cursor: grabbing;
 }
 
-.grabbing .slide img{
+.grabbing .slide img,
+.grabbing .slide-local img{
     transform: scale(0.95);
 }
 
-.grabbing .slide-local img{
-    transform: scale(0.95);
+.arrows {
+    @include FlexPosition(row, space-between);
+    @include WidAndHeig(100%, auto);
+}
+
+#arrOne,
+#arrTwo {
+    position: relative;
+    transform: scaleX(.8);
+    bottom: 17rem;
+}
+
+#arrOne:active,
+#arrTwo:active {
+    filter: grayscale(1);
+}
+
+#arrTwo {
+    transform: rotate(180deg) scaleX(.8);
 }
 
 .espaLateral {
@@ -274,21 +267,21 @@ article.radioBtn {
 .radioBtn div {
     @include WidAndHeig(40%, auto);
 
-    input {
-        @include WidAndHeig(15px, 15px);
-
-        appearance: none;
-        border-radius: 50%;
-        border: 2px solid $MainColor;
-        transition: 0.2s all linear;
-
-        &:checked {
-            border: 7px solid $MainColor;
-            background-color: $MainColor;
-        }
-    }
-
     margin-bottom: $fontSize-1;
+}
+
+input.testeInpu {
+    @include WidAndHeig(15px, 15px);
+
+    appearance: none;
+    border-radius: 50%;
+    border: 2px solid $MainColor;
+    transition: 0.2s all linear;
+
+    &:checked {
+        border: 7px solid $MainColor;
+        background-color: $MainColor;
+    }
 }
 
 .textInput {
@@ -352,6 +345,16 @@ article.submitBtn {
 
     &:active {
         background-color: $FooterColor;
+    }
+}
+
+.radios{
+    @include FlexPosition(row, center);
+
+    .inpLocal {
+        @include FlexPosition(row, space-around);
+        @include WidAndHeig(15%, auto);
+        margin-bottom: 1rem;
     }
 }
 
@@ -426,8 +429,6 @@ img.card-img {
     background-color: $WhiteColor;
     color: $MainColor;
     padding: .5rem 5%;
-    border-radius: $Radius;
-    box-shadow: 0px 5px 5px 5px #00000040;
     font-size: $fontSize-2;
 }
 
@@ -586,6 +587,11 @@ h4 {
         margin: 0 5vw;
     }
 
+    #arrOne,
+    #arrTwo {
+        bottom: 17rem;
+    }
+
     .one img{
         content: url(../../img/media-query/slide/tablet-lift.jpg);
     }
@@ -618,6 +624,11 @@ h4 {
 
     .cards {
         margin: 0 5vw;
+    }
+
+    #arrOne,
+    #arrTwo {
+        bottom: 22.5rem;
     }
 
     .one img{
@@ -683,6 +694,11 @@ h4 {
 
     .titulo {
         margin: 0 25vw;
+    }
+
+    #arrOne,
+    #arrTwo {
+        bottom: 20rem;
     }
 
     .espaLateral {

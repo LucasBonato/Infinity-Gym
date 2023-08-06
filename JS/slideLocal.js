@@ -1,5 +1,8 @@
 const sliderLocal = document.querySelector('.slider-container-local'),
-    slidesLocal = Array.from(document.querySelectorAll('.slide-local'));
+    slidesLocal = Array.from(document.querySelectorAll('.slide-local')),
+    inpOne = document.getElementById('oneLocal'),
+    inpTwo = document.getElementById('twoLocal'),
+    inpThree = document.getElementById('threeLocal');
 
 let isDraggingLocal = false,
     startPosLocal = 0,
@@ -10,13 +13,27 @@ let isDraggingLocal = false,
     startPosYLocal = 0,
     isVerticalDragLocal = false;
 
+inpOne.addEventListener("click", () => {
+    currentIndexLocal = 0;
+    setPositionByIndexLocal();
+});
+
+inpTwo.addEventListener("click", () => {
+    currentIndexLocal = 1;
+    setPositionByIndexLocal();
+});
+
+inpThree.addEventListener("click", () => {
+    currentIndexLocal = 2;
+    setPositionByIndexLocal();
+});
+
 slidesLocal.forEach((slideLocal, indexLocal) => {
     const slideImageLocal = slideLocal.querySelector('img');
 
     slideImageLocal.addEventListener('dragstart', (e) => e.preventDefault());
 
     if(slidesLocal.length >= 2) {
-
         slideLocal.addEventListener('touchstart', touchStartLocal(indexLocal));
         slideLocal.addEventListener('touchend', touchEndLocal);
         slideLocal.addEventListener('touchmove', touchMoveLocal);
@@ -36,26 +53,6 @@ function getPositionXLocal(event) {
 
 function getPositionYLocal(event) {
     return event.type.includes('mouse') ? event.pageY : event.touches[0].clientY;
-}
-
-function goPrevLocal(event) {
-    event.preventDefaultLocal();
-    event.stopPropagationLocal();
-    if (currentIndexLocal > 0) {
-        currentIndexLocal -= 1;
-        setPositionByIndexLocal();
-    }
-    return false;
-}
-
-function goNextLocal(event) {
-    event.preventDefaultLocal();
-    event.stopPropagationLocal();
-    if (currentIndexLocal < slidesLocal.length - 1) {
-        currentIndexLocal += 1;
-        setPositionByIndexLocal();
-    }
-    return false;
 }
 
 function touchStartLocal(index) {
@@ -137,6 +134,18 @@ function animationLocal() {
 function setPositionByIndexLocal() {
     currentTranslateLocal = currentIndexLocal * -window.innerWidth;
     prevTranslateLocal = currentTranslateLocal;
+
+    switch(currentIndexLocal) {
+        case 0:
+            inpOne.checked = true;
+        break;
+        case 1:
+            inpTwo.checked = true;
+        break;
+        case 2:
+            inpThree.checked = true;
+        break;
+    }
 
     setSliderPositionLocal();
 }
