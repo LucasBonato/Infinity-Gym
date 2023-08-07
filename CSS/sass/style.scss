@@ -8,7 +8,7 @@
     padding: 0;
     font-family: 'Inter', sans-serif;
     scroll-behavior: smooth;
-    scroll-margin: 13.5vh;
+    scroll-margin: 12.5vh;
     scrollbar-width: thin;
     scrollbar-color: $MainColor $FooterColor;
     box-sizing: border-box;
@@ -32,7 +32,7 @@
 
   body {
     background-color: $BackgroundColor;
-    margin-top: 12.5vh;
+    margin-top: 8vh;
     overflow-x: hidden;
 
     ul {list-style: none;}
@@ -41,13 +41,13 @@
 
 header {
     @include FlexPosition(row, center);
-    @include WidAndHeig(100%, 12.5vh);
+    @include WidAndHeig(100%, 10vh);
 
     position: fixed;
     background-color: $WhiteColor;
     outline: 5px solid $MainColor;
     border-radius: 0 0 $Radius 0;
-    top: -1px;
+    top: 0px;
     z-index: 10;
 
     nav {
@@ -120,11 +120,11 @@ li.desktop {
 }
 
 .mobile-nav {
-    @include WidAndHeig(80vw, 88vh);
+    @include WidAndHeig(80vw, 90vh);
     @include FlexPosition(column, auto);
 
     right: 100vw;
-    top: 12.40vh;
+    top: 10vh;
 
     position: fixed;
     
@@ -140,7 +140,7 @@ li.desktop {
     }
 
     ul {
-        @include FlexPosition(column, space-around);
+        @include FlexPosition(column, space-evenly);
         @include WidAndHeig(100%, 90%);
 
         li a {
@@ -153,7 +153,8 @@ li.desktop {
 }
 
 .logo-mobile {
-    @include WidAndHeig(10rem, 10rem);
+    @include WidAndHeig(8rem, 8rem);
+    margin-top: 10%;
 }
 
 div.container {
@@ -351,9 +352,10 @@ article.submitBtn {
 .radios{
     @include FlexPosition(row, center);
 
-    .inpLocal {
+    .inpLocal,
+    .inpHome {
         @include FlexPosition(row, space-around);
-        @include WidAndHeig(15%, auto);
+        @include WidAndHeig(25vw, auto);
         margin-bottom: 1rem;
     }
 }
@@ -489,24 +491,22 @@ footer {
     }
 
     article {
-        &.social-media {
+        &.social-media,
+        &.contact {
             @include FlexPosition(column, auto);
             @include WidAndHeig(auto, 10rem);
 
             ul {
-                @include FlexPosition(row, auto);
+                @include FlexPosition(row, space-evenly);
+                @include WidAndHeig(100%, auto);
             }
-        }
-
-        &.contact {
-            @include FlexPosition(column, auto);
-            @include WidAndHeig(auto, 10rem);
         }
 
         &.local {
             @include FlexPosition(column, space-around);
 
             iframe {
+                margin-top: 1rem;
                 border: none;
                 border-radius: $Radius;
             }
@@ -564,13 +564,19 @@ h4 {
 }
 
 .one-local img{
-    content: url(../../img/media-query/slide/mobile-man.jpg);
+    content: url(../../img/slideLocal/dentroAcademia-1.jpg);
 }
 .two-local img{
-    content: url(../../img/media-query/slide/mobile-weight.jpg);
+    content: url(../../img/slideLocal/dentroAcademia-2.jpg);
 }
 .three-local img{
-    content: url(../../img/media-query/slide/mobile-Woman.jpg);
+    content: url(../../img/slideLocal/dentroAcademia-3.jpg);
+}
+.four-local img{
+    content: url(../../img/slideLocal/foraAca-1.jpg);
+}
+.five-local img{
+    content: url(../../img/slideLocal/foraAca-2.jpg);
 }
 
 // * Tablet
@@ -603,13 +609,19 @@ h4 {
     }
 
     .one-local img{
-        content: url(../../img/media-query/slide/tablet-lift.jpg);
+        content: url(../../img/slideLocal/dentroAcademia-1.jpg);
     }
     .two-local img{
-        content: url(../../img/media-query/slide/tablet-up.jpg);
+        content: url(../../img/slideLocal/dentroAcademia-2.jpg);
     }
     .three-local img{
-        content: url(../../img/media-query/slide/tablet-woman.jpg);
+        content: url(../../img/slideLocal/dentroAcademia-3.jpg);
+    }
+    .four-local img{
+        content: url(../../img/slideLocal/foraAca-1.jpg);
+    }
+    .five-local img{
+        content: url(../../img/slideLocal/foraAca-2.jpg);
     }
 }
 
@@ -644,11 +656,11 @@ h4 {
     .one-local img{
         content: url(../../img/media-query/slide/tablet-lift.jpg);
     }
-    .two-local img{
-        content: url(../../img/media-query/slide/tablet-up.jpg);
+    .four-local img{
+        content: url(../../img/slideLocal/foraAca-1.jpg);
     }
-    .three-local img{
-        content: url(../../img/media-query/slide/tablet-woman.jpg);
+    .five-local img{
+        content: url(../../img/slideLocal/foraAca-2.jpg);
     }
 }
 
@@ -792,6 +804,21 @@ h4 {
         padding: 1rem;
     }
 
+    .radios {
+        .inpLocal,
+        .inpHome{
+            width: 10vw;
+        }
+    }
+
+    .one-local,
+    .two-local,
+    .three-local,
+    .four-local,
+    .five-local {
+        @include WidAndHeig(100vw, 50vh);
+    }
+
     .one img{
         content: url(../../img/men-GYM-1920x600.jpg);
     }
@@ -803,12 +830,18 @@ h4 {
     }
 
     .one-local img{
-        content: url(../../img/men-GYM-1920x600.jpg);
+        content: url(../../img/slideLocal/desk/denAcaDesk-1.jpg);
     }
     .two-local img{
-        content: url(../../img/whieght-GYM1920x600.jpg);
+        content: url(../../img/slideLocal/desk/denAcaDesk-2.jpg);
     }
     .three-local img{
-        content: url(../../img/woman-GYM-1920x600.jpg);
+        content: url(../../img/slideLocal/desk/denAcaDesk-3.jpg);
+    }
+    .four-local img{
+        content: url(../../img/slideLocal/desk/forAcaDesk-1.jpg);
+    }
+    .five-local img{
+        content: url(../../img/slideLocal/desk/forAcaDesk-2.jpg);
     }
 }

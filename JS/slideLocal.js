@@ -2,7 +2,9 @@ const sliderLocal = document.querySelector('.slider-container-local'),
     slidesLocal = Array.from(document.querySelectorAll('.slide-local')),
     inpOne = document.getElementById('oneLocal'),
     inpTwo = document.getElementById('twoLocal'),
-    inpThree = document.getElementById('threeLocal');
+    inpThree = document.getElementById('threeLocal'),
+    inpFour = document.getElementById('fourLocal'),
+    inpFive = document.getElementById('fiveLocal');
 
 let isDraggingLocal = false,
     startPosLocal = 0,
@@ -27,6 +29,16 @@ inpTwo.addEventListener("click", () => {
 
 inpThree.addEventListener("click", () => {
     currentIndexLocal = 2;
+    setPositionByIndexLocal();
+});
+
+inpFour.addEventListener("click", () => {
+    currentIndexLocal = 3;
+    setPositionByIndexLocal();
+});
+
+inpFive.addEventListener("click", () => {
+    currentIndexLocal = 4;
     setPositionByIndexLocal();
 });
 
@@ -146,6 +158,12 @@ function setPositionByIndexLocal() {
         break;
         case 2:
             inpThree.checked = true;
+        break;
+        case 3:
+            inpFour.checked = true;
+        break;
+        case 4:
+            inpFive.checked = true;
         break;
     }
 
