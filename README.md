@@ -16,7 +16,7 @@ Um projeto com aspecto simples focado no front-end, não conectado ao banco de d
 
 ## Design
 
-[![Design site](https://imgur.com/a/d2couZU)](lucasbonato.github.io);
+[![Design site](./img/Readme/Design.png)](lucasbonato.github.io);
 
 ## Onde acessar o site?
 
