@@ -7,13 +7,12 @@
     
     <title>Infinity Gym</title>
 
-    <link rel="stylesheet" href="./CSS/sass/style.css
-    ">
+    <link rel="stylesheet" href="./CSS/sass/style.css">
     <link rel="shortcut icon" href="./img/Icons/logo/LOGO.png" type="image/x-icon">
 
-    <script defer src="./JS/goingIn.js"></script>
+    <script defer src="./JS/script.js"></script>
 </head>
-<body>
+<body id="TOP">
     <header>
         <nav>
             <ul>
@@ -26,18 +25,18 @@
                 <li class="desktop"><a href="#LOCAIS">Locais</a></li>
                 <li class="desktop"><a href="#IMC">IMC</a></li>
                 <li class="desktop"><a href="#METAS">Metas</a></li>
-                <li class="desktop"><a href="#HOME">Home</a></li>
-                <li><a href="#HOME"><img src="./img/Logo/LOGO.svg" alt="" class="logo"></a></li>
+                <li class="desktop"><a href="#TOP">Home</a></li>
+                <li><a href="#TOP"><img src="./img/Logo/LOGO.svg" alt="" class="logo"></a></li>
             </ul>
         </nav>
         <nav class="mobile-nav">
             <ul>
-                <li><a href="#HOME" class="card-titulo btn-nav">Home</a></li>
+                <li><a href="#TOP" class="card-titulo btn-nav">Home</a></li>
                 <li><a href="#METAS" class="card-titulo btn-nav">Metas</a></li>
                 <li><a href="#IMC" class="card-titulo btn-nav">IMC</a></li>
                 <li><a href="#LOCAIS" class="card-titulo btn-nav">Locais</a></li>
                 <li><a href="#PLANOS" class="card-titulo btn-nav">Planos</a></li>
-                <li><img src="./img/Logo/LOGO.svg" alt="" class="logo-mobile"></li>
+                <li><a href="#TOP"><img src="./img/Logo/LOGO.svg" alt="" class="logo-mobile"></a></li>
             </ul>
         </nav>
     </header>
@@ -159,7 +158,7 @@
                         <a href="" class="card-preco">R$ 39,90/Mês</a>
                     </article>
                     <article class="card-plano maior hidden" id="Pro">
-                        <img src="./img/Icons/planos/Energy.svg" alt="" class="card-img">
+                        <img src="./img/Icons/planos/Energy.svg" alt="" class="card-img" id="big-svg">
                         <h3 class="card-titulo">PRO</h3>
                         <ul>
                             <li><p>Das 00:00 às 18:00</p> <img src="./img/Icons/visual/Done-24.png" alt=""></li>
@@ -189,7 +188,7 @@
     <div class="gradient"></div>
     <footer>
         <section>
-            <img src="./img/Logo/LOGO.svg" alt="" class="logo-footer">
+            <a href="#TOP"><img src="./img/Logo/LOGO.svg" alt="" class="logo-footer"></a>
             <article class="social-media media">   
                 <h4>Redes Sociais</h4>
                 <ul>
@@ -212,8 +211,8 @@
                 referrerpolicy="no-referrer-when-downgrade"></iframe>
             </article>
         </section>
+        <p id="copy">&copy;Copyright - 2023</p>
     </footer>
-    <script src="./JS/index.js"></script>
     <script src="./JS/slides.js"></script>
     <script src="./JS/slideLocal.js"></script>
     <script src="./JS/imc.js"></script>

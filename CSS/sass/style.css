@@ -545,7 +545,7 @@ footer article.social-media ul, footer article.contact ul {
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  width: 100%;
+  width: 150%;
   height: auto;
 }
 footer article.local {
@@ -586,6 +586,12 @@ footer img {
 h4 {
   color: #F3F3F3;
   font-size: 1.2rem;
+}
+
+#copy {
+  color: #F3F3F3;
+  text-align: center;
+  margin-top: 0.5rem;
 }
 
 .hidden {
@@ -736,10 +742,10 @@ h4 {
   header a {
     text-decoration: none;
     color: #48919E;
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
   .titulo {
-    margin: 0 25vw;
+    margin: 0 40vw;
   }
   #arrOne,
   #arrTwo {
@@ -805,6 +811,10 @@ h4 {
     padding: 0.5%;
     width: 22.5vw;
     margin-bottom: 0;
+  }
+  #big-svg {
+    width: 9rem;
+    height: 9rem;
   }
   footer section {
     width: 100%;
