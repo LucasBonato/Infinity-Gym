@@ -16,7 +16,7 @@ Um projeto com aspecto simples focado no front-end, não conectado ao banco de d
 
 ## Design
 
-[![Design site](./img/Readme/Design.png)](lucasbonato.github.io);
+[![Design site](./img/Readme/Design.png)](lucasbonato.github.io)
 
 ## Onde acessar o site?
 
@@ -24,6 +24,6 @@ Você poderá acessar o site neste link [Site](lucasbonato.github.io) ou acessar
 
 ## Equipe
 
-- **Lucas Bonato**: Desenvolvedor e Web Desinger
+- **Lucas Bonato**: Desenvolvedor e Web Designer
 - **Lucas Rocha**: Designer e Social Manager
 - **Nata**: Designer e WebMaster
